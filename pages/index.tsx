@@ -38,7 +38,7 @@ export default function Home({ stars }: HomeProps) {
             sx={{
               margin: '20px auto 16px auto',
               backgroundColor: 'rgba(13, 71, 161, 0.85)',
-              width: '375px',
+              width: '360px',
               padding: '15px 0',
               borderRadius: '10px',
             }}
@@ -48,7 +48,7 @@ export default function Home({ stars }: HomeProps) {
               <Box
                 component="span"
                 sx={(theme) => ({
-                  color: theme.colors.blue[1],
+                  color: theme.colors.blue[2],
                 })}
               >
                 Alexander
