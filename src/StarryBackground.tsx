@@ -1,11 +1,11 @@
 import { useAnimationFrame, motion, TargetAndTransition } from 'framer-motion';
 import { useState } from 'react';
 
-const animationDuration = 0.8; // seconds
+const animationDuration = 0.5; // seconds
 const twinkleAnimation: TargetAndTransition = {
   opacity: [
-    ...new Array(10).fill(0).map((_, i) => 1 - i * 0.05),
-    ...new Array(10).fill(0).map((_, i) => 1 - 9 * 0.05 + i * 0.05),
+    ...new Array(20).fill(0).map((_, i) => 1 - (i + 1) * 0.05),
+    ...new Array(20).fill(0).map((_, i) => 1 - 19 * 0.05 + i * 0.05),
   ],
   transition: { duration: animationDuration },
 };
@@ -27,7 +27,9 @@ export default function StarryBackground({ stars }: StarryBackgroundProps) {
     ticker += delta;
     if (ticker > animationDuration * 1000) {
       ticker = 0;
-      setStarToAnimate(Math.floor(Math.random() * stars.length));
+      if (Math.random() > 0.5) {
+        setStarToAnimate(Math.floor(Math.random() * stars.length));
+      }
     }
   });
   return (
@@ -43,9 +45,8 @@ export default function StarryBackground({ stars }: StarryBackgroundProps) {
             top: y,
             width: r,
             height: r,
-            opacity: 1,
           }}
-          animate={starToAnimate === i ? twinkleAnimation : { opacity: 1 }}
+          animate={starToAnimate === i ? twinkleAnimation : {}}
         />
       ))}
     </>

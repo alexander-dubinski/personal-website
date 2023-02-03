@@ -15,7 +15,7 @@ export async function getStaticProps() {
     const star: Star = {
       x: `${Math.random() * 100}%`,
       y: `${Math.random() * 100}%`,
-      r: `${Math.floor(Math.random() * 5 + 4)}px`,
+      r: `${Math.floor(Math.random() * 8 + 2)}px`,
     };
     stars.push(star);
   }
