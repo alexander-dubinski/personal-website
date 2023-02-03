@@ -3,8 +3,8 @@ import StarryBackground, {
 } from '@/src/StarryBackground';
 import { getStarField } from '@/src/util/stars';
 
-interface AboutProps extends StarryBackgroundProps {}
-export default function About({ stars }: AboutProps) {
+interface ResumeProps extends StarryBackgroundProps {}
+export default function Resume({ stars }: ResumeProps) {
   return <StarryBackground stars={stars} />;
 }
 
