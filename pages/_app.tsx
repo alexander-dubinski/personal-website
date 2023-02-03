@@ -1,7 +1,27 @@
 import '@/styles/globals.css';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider, MantineThemeOverride } from '@mantine/core';
+
+const theme: MantineThemeOverride = {
+  colorScheme: 'dark',
+  black: '#212427',
+  primaryColor: 'blue',
+  colors: {
+    blue: [
+      '#E3F2FD',
+      '#BBDEFB',
+      '#90CAF9',
+      '#64B5F6',
+      '#42A5F5',
+      '#2196F3',
+      '#1E88E5',
+      '#1976D2',
+      '#1565C0',
+      '#0D47A1',
+    ],
+  },
+};
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -13,14 +33,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-        theme={{
-          /** Put your mantine theme override here */
-          colorScheme: 'light',
-        }}
-      >
+      <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
         <main>
           <Component {...pageProps} />
         </main>

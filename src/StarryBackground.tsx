@@ -1,6 +1,7 @@
 import { useAnimationFrame, motion, TargetAndTransition } from 'framer-motion';
 import { useState } from 'react';
 
+export const starRadiusRange = 7;
 const animationDuration = 0.5; // seconds
 const twinkleAnimation: TargetAndTransition = {
   opacity: [
@@ -18,6 +19,7 @@ export interface Star {
   x: string;
   y: string;
   r: string;
+  opacity: number;
 }
 
 export default function StarryBackground({ stars }: StarryBackgroundProps) {
@@ -34,7 +36,7 @@ export default function StarryBackground({ stars }: StarryBackgroundProps) {
   });
   return (
     <>
-      {stars.map(({ x, y, r }, i) => (
+      {stars.map(({ x, y, r, opacity }, i) => (
         <motion.div
           key={i}
           initial={false}
@@ -45,6 +47,7 @@ export default function StarryBackground({ stars }: StarryBackgroundProps) {
             top: y,
             width: r,
             height: r,
+            backgroundColor: `rgba(255, 255, 255, ${opacity})`,
           }}
           animate={starToAnimate === i ? twinkleAnimation : {}}
         />
