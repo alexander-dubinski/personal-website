@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Box, Title, Button } from '@mantine/core';
 import { getStarField } from '@/src/util/stars';
+import Head from 'next/head';
 
 interface HomeProps extends StarryBackgroundProps {}
 
@@ -17,6 +18,9 @@ const navButtons = [
 export default function Home({ stars }: HomeProps) {
   return (
     <>
+      <Head>
+        <title>Alexander Dubinski - Home</title>
+      </Head>
       <Box
         sx={{
           zIndex: 1,
