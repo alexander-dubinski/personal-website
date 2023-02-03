@@ -24,3 +24,13 @@ a {
 .box {
   border-radius: 50%;
 }
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 86px;
+  padding: 20px 30px;
+  width: 100%;
+  z-index: 2;
+}

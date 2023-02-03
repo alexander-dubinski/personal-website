@@ -2,6 +2,7 @@ import '@/styles/globals.css';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { MantineProvider, MantineThemeOverride } from '@mantine/core';
+import Header from '@/src/Header';
 
 const theme: MantineThemeOverride = {
   colorScheme: 'dark',
@@ -32,8 +33,8 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
+        <Header />
         <main>
           <Component {...pageProps} />
         </main>

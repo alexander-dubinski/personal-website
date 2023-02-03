@@ -1,7 +1,7 @@
 import { useAnimationFrame, motion, TargetAndTransition } from 'framer-motion';
 import { useState } from 'react';
 
-export const starRadiusRange = 7;
+export const starRadiusRange = 6;
 const animationDuration = 0.5; // seconds
 const twinkleAnimation: TargetAndTransition = {
   opacity: [

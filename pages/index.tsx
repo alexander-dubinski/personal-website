@@ -28,6 +28,7 @@ export default function Home({ stars }: HomeProps) {
       >
         <Box sx={{ textAlign: 'center' }}>
           <Image
+            priority
             style={{ borderRadius: '25px' }}
             src="/ProfilePicture.jpg"
             alt="profile"
@@ -82,7 +83,7 @@ export default function Home({ stars }: HomeProps) {
 
 export async function getStaticProps() {
   const stars: Star[] = [];
-  for (let i = 0; i < 250; i++) {
+  for (let i = 0; i < 350; i++) {
     const r = Math.floor(Math.random() * starRadiusRange + 2);
     const star: Star = {
       x: `${Math.random() * 100}%`,
