@@ -39,13 +39,13 @@ export default function Home({ stars }: HomeProps) {
             height={300}
           />
           <Box
-            sx={{
+            sx={(theme) => ({
               margin: '20px auto 16px auto',
-              backgroundColor: 'rgba(13, 71, 161, 0.85)',
+              backgroundColor: theme.colors.alphaDarkBlue[8],
               width: '360px',
               padding: '15px 0',
               borderRadius: '10px',
-            }}
+            })}
           >
             <Title color="blue.0">
               Hi, my name is <br />
