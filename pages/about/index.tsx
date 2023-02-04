@@ -5,6 +5,7 @@ import { getStarField } from '@/src/util/stars';
 import Head from 'next/head';
 import { Box, Title, Text } from '@mantine/core';
 import Image from 'next/image';
+import PageContentBox from '@/src/PageContentBox';
 
 interface AboutProps extends StarryBackgroundProps {}
 export default function About({ stars }: AboutProps) {
@@ -13,26 +14,7 @@ export default function About({ stars }: AboutProps) {
       <Head>
         <title>Alexander Dubinski - About</title>
       </Head>
-      <Box
-        sx={(theme) => ({
-          position: 'absolute',
-          top: '100px',
-          left: '50%',
-          maxWidth: '960px',
-          width: '100%',
-          height: 'calc(100% - 200px)',
-          transform: 'translateX(-50%)',
-          backgroundColor: theme.colors.alphaDarkBlue[8],
-          borderRadius: '15px',
-          zIndex: 1,
-          padding: '1em',
-          color: 'white',
-          overflowY: 'auto',
-          '@media (max-width: 620px)': {
-            height: 'calc(100% - 100px)',
-          },
-        })}
-      >
+      <PageContentBox>
         <Box
           sx={{
             position: 'relative',
@@ -112,7 +94,7 @@ export default function About({ stars }: AboutProps) {
           turpis. Maecenas eu ex eget purus interdum pharetra a a leo. Aliquam
           quis aliquet neque. Curabitur interdum lacinia luctus.
         </Text>
-      </Box>
+      </PageContentBox>
       <StarryBackground stars={stars} />
     </>
   );
