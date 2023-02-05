@@ -9,6 +9,7 @@ export default function Header() {
     <header>
       <Link href="/">
         <Image
+          priority
           style={{ ...headerImageStyles, borderRadius: '10px' }}
           src="/Logo.png"
           alt="logo"

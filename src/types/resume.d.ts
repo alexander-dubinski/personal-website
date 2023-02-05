@@ -3,9 +3,8 @@ interface EducationEntry {
   description: string;
   end_year: number;
   gpa: number;
-  img: string;
+  image: string;
   major: string;
-  order: number;
   school: string;
   start_year: number;
 }
@@ -16,8 +15,7 @@ interface CareerEntry {
   team: string;
   description: string;
   end_year: number;
-  img: string;
-  order: number;
+  image: string;
   start_year: number;
   title: string;
 }
@@ -25,15 +23,4 @@ interface CareerEntry {
 interface Image {
   url: string;
   alt: string;
-}
-
-export interface ProjectContent {
-  description: string;
-  end_year: number;
-  images: Image[];
-  main_img: Image;
-  name: string;
-  order: number;
-  start_year: number;
-  tools: string[];
 }
