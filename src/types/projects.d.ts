@@ -1,10 +1,9 @@
-export interface ProjectContent {
+interface ProjectContent {
+  id: string;
   description: string;
-  end_year: number;
   images: Image[];
-  main_image: Image;
+  mainImage: Image;
   name: string;
-  order: number;
-  start_year: number;
+  startYear: number;
   tools: string[];
 }

@@ -1,11 +1,11 @@
 const wovenPlanetSSWE: CareerEntry = {
   company: 'Woven Planet Holdings',
-  department: 'Geo Department',
+  department: 'Geo',
   team: 'Map Tooling',
   description: 'TBD',
-  end_year: 2022,
+  endYear: 2022,
   image: 'WovenPlanet',
-  start_year: 2021,
+  startYear: 2021,
   title: 'Senior Software Engineer',
 };
 
@@ -13,9 +13,9 @@ const wovenPlanetEM: CareerEntry = {
   ...wovenPlanetSSWE,
   team: 'Map Services',
   description: 'TBD',
-  end_year: 0,
+  endYear: 0,
   image: 'WovenPlanet',
-  start_year: 2022,
+  startYear: 2022,
   title: 'Software Engineering Manager',
 };
 
@@ -24,9 +24,9 @@ const rakutenSWE: CareerEntry = {
   department: 'Big Data Department',
   team: 'Coupon Service Team',
   description: 'TBD',
-  end_year: 2021,
+  endYear: 2021,
   image: 'Rakuten',
-  start_year: 2018,
+  startYear: 2018,
   title: 'Full Stack Software Engineer',
 };
 
@@ -35,9 +35,9 @@ const eatproCTO: CareerEntry = {
   department: '',
   team: '',
   description: 'TBD',
-  end_year: 0,
+  endYear: 0,
   image: 'Eatpro',
-  start_year: 2017,
+  startYear: 2017,
   title: 'Chief Technology Officer, Co-Founder',
 };
 
@@ -46,9 +46,9 @@ const codecademy: CareerEntry = {
   department: 'Intensive Course Department',
   team: 'Mentoring Team',
   description: 'TBD',
-  end_year: 2020,
+  endYear: 2020,
   image: 'Codecademy',
-  start_year: 2018,
+  startYear: 2018,
   title: 'Software Engineering and Data Science Mentor',
 };
 
@@ -57,9 +57,9 @@ const usmc: CareerEntry = {
   department: 'Marine Corps',
   team: 'Military Police',
   description: 'TBD',
-  end_year: 2016,
+  endYear: 2016,
   image: 'USMC',
-  start_year: 2011,
+  startYear: 2011,
   title: 'Military Police Collision Investigator',
 };
 

@@ -1,12 +1,12 @@
 interface EducationEntry {
   degree: string;
   description: string;
-  end_year: number;
+  endYear: number;
   gpa: number;
   image: string;
   major: string;
   school: string;
-  start_year: number;
+  startYear: number;
 }
 
 interface CareerEntry {
@@ -14,13 +14,8 @@ interface CareerEntry {
   department: string;
   team: string;
   description: string;
-  end_year: number;
+  endYear: number;
   image: string;
-  start_year: number;
+  startYear: number;
   title: string;
-}
-
-interface Image {
-  url: string;
-  alt: string;
 }
