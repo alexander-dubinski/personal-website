@@ -1,4 +1,4 @@
-import { Accordion, Group, Box, Text, Button } from '@mantine/core';
+import { Accordion, Group, Box, Text, Button, Badge } from '@mantine/core';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -28,7 +28,13 @@ export default function ProjectListItem({
               {name}
             </Text>
             <Text>Started {startYear}</Text>
-            <Text color="dimmed">Tools: {tools.join(', ')}</Text>
+            <Box mt="10px">
+              {tools.map((tool) => (
+                <Badge mr="5px" variant="filled" color="blue.6" key={tool}>
+                  {tool}
+                </Badge>
+              ))}
+            </Box>
           </Box>
         </Group>
       </Accordion.Control>

@@ -13,6 +13,7 @@ import ListView from '@/src/icons/ListView.svg';
 import GridView from '@/src/icons/GridView.svg';
 import Search from '@/src/icons/Search.svg';
 import ProjectGridItem from '@/src/projects/ProjectGridItem';
+import { projectsFuse } from '@/src/search/search';
 
 enum ProjectView {
   List,
@@ -21,9 +22,23 @@ enum ProjectView {
 
 interface ProjectsProps extends StarryBackgroundProps {}
 export default function Projects({ stars }: ProjectsProps) {
+  const [currentProjects, setCurrentProjects] =
+    useState<ProjectContent[]>(projects);
   const [projectView, setProjectView] = useState<ProjectView>(ProjectView.List);
   const [search, setSearch] = useState<string>('');
   const Wrapper = projectView === ProjectView.List ? Accordion : Grid;
+
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.currentTarget.value;
+    if (!value) {
+      setSearch(value);
+      setCurrentProjects(projects);
+      return;
+    }
+    setSearch(value);
+    setCurrentProjects(projectsFuse.search(value).map((res) => res.item));
+  };
+
   return (
     <>
       <Head>
@@ -59,14 +74,12 @@ export default function Projects({ stars }: ProjectsProps) {
               placeholder="Search..."
               rightSection={<Search />}
               value={search}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setSearch(e.currentTarget.value)
-              }
+              onChange={handleSearchChange}
             />
           </Grid.Col>
         </Grid>
         <Wrapper chevron={<DownChevron />} chevronSize={40} variant="filled">
-          {projects.map((project) =>
+          {currentProjects.map((project) =>
             projectView === ProjectView.List ? (
               <ProjectListItem key={project.id} {...project} />
             ) : (

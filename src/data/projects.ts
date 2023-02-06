@@ -61,7 +61,7 @@ const fakeProject3: ProjectContent = {
   },
   name: 'Fake Project Number Three',
   startYear: 2020,
-  tools: [],
+  tools: ['Node.js', 'React', 'Unreal'],
 };
 
 const fakeProject4: ProjectContent = {

@@ -1,4 +1,4 @@
-import { Grid, Box, Text, Card } from '@mantine/core';
+import { Grid, Box, Text, Card, Badge } from '@mantine/core';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -30,7 +30,13 @@ export default function ProjectGridItem({
             </Text>
             <Text>Started {startYear}</Text>
             <Text>{description}</Text>
-            <Text color="dimmed">Tools: {tools.join(', ')}</Text>
+            <Box mt="10px">
+              {tools.map((tool) => (
+                <Badge mr="5px" variant="filled" color="blue.6" key={tool}>
+                  {tool}
+                </Badge>
+              ))}
+            </Box>
           </Box>
         </Card>
       </Link>
