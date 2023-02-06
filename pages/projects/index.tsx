@@ -7,7 +7,16 @@ import PageContentBox from '@/src/PageContentBox';
 import { projects } from '@/src/data/projects';
 import ProjectListItem from '@/src/projects/ProjectListItem';
 import { ChangeEvent, useState } from 'react';
-import { Accordion, ActionIcon, Grid, TextInput } from '@mantine/core';
+import {
+  Accordion,
+  ActionIcon,
+  Grid,
+  TextInput,
+  Text,
+  Divider,
+  Group,
+  Box,
+} from '@mantine/core';
 import DownChevron from '@/src/icons/DownChevron.svg';
 import ListView from '@/src/icons/ListView.svg';
 import GridView from '@/src/icons/GridView.svg';
@@ -46,31 +55,48 @@ export default function Projects({ stars }: ProjectsProps) {
       </Head>
       <PageContentBox>
         <Grid>
-          <Grid.Col xs={12} sm={4}>
-            <ActionIcon
-              onClick={setProjectView.bind(null, ProjectView.List)}
-              mr="10px"
-              display="inline-block"
-              color="blue"
-              size={42}
-              variant={projectView === ProjectView.List ? 'filled' : 'light'}
-            >
-              <ListView />
-            </ActionIcon>
-            <ActionIcon
-              onClick={setProjectView.bind(null, ProjectView.Grid)}
-              display="inline-block"
-              color="blue"
-              size={42}
-              variant={projectView === ProjectView.Grid ? 'filled' : 'light'}
-            >
-              <GridView />
-            </ActionIcon>
+          <Grid.Col xs={12} sm={4} sx={{ height: '62px' }}>
+            <Group noWrap position="apart">
+              <Text
+                size="xl"
+                color="blue.2"
+                underline
+                fw="bold"
+                display="inline-block"
+              >
+                Projects
+              </Text>
+              <Box>
+                <ActionIcon
+                  onClick={setProjectView.bind(null, ProjectView.List)}
+                  mr="10px"
+                  display="inline-block"
+                  color="blue"
+                  size={42}
+                  variant={
+                    projectView === ProjectView.List ? 'filled' : 'light'
+                  }
+                >
+                  <ListView />
+                </ActionIcon>
+                <ActionIcon
+                  onClick={setProjectView.bind(null, ProjectView.Grid)}
+                  display="inline-block"
+                  color="blue"
+                  size={42}
+                  variant={
+                    projectView === ProjectView.Grid ? 'filled' : 'light'
+                  }
+                >
+                  <GridView />
+                </ActionIcon>
+              </Box>
+            </Group>
           </Grid.Col>
-          <Grid.Col xs={12} sm={8}>
+          <Grid.Col xs={12} sm={8} sx={{ height: '62px' }}>
             <TextInput
               maw="300px"
-              m="auto"
+              m="6px auto 0 auto"
               placeholder="Search..."
               rightSection={<Search />}
               value={search}
@@ -78,6 +104,7 @@ export default function Projects({ stars }: ProjectsProps) {
             />
           </Grid.Col>
         </Grid>
+        <Divider m="15px 0" color="blue" />
         <Wrapper chevron={<DownChevron />} chevronSize={40} variant="filled">
           {currentProjects.map((project) =>
             projectView === ProjectView.List ? (

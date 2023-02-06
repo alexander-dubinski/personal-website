@@ -12,7 +12,14 @@ export default function ResumeItemDetails({
 }: ResumeItemDetailsProps) {
   return (
     <Grid.Col xs={12} sm={6}>
-      <Text align="center" size="xl" fw="bold" color="blue.2" mb="20px">
+      <Text
+        align="center"
+        size="xl"
+        fw="bold"
+        color="blue.2"
+        mb="20px"
+        underline
+      >
         Details
       </Text>
       <Box

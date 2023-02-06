@@ -6,7 +6,7 @@ export default function Overview() {
   return (
     <Grid>
       <Grid.Col xs={12}>
-        <Text color="blue.1" size="xl" align="center" fw="bold">
+        <Text color="blue.1" size="xl" align="center" fw="bold" underline>
           Introduction
         </Text>
         <Text pt="8px">
@@ -25,7 +25,14 @@ export default function Overview() {
         </Text>
       </Grid.Col>
       <Grid.Col xs={12} sm={6}>
-        <Text color="blue.1" size="xl" align="center" mb="15px" fw="bold">
+        <Text
+          color="blue.1"
+          size="xl"
+          align="center"
+          mb="15px"
+          fw="bold"
+          underline
+        >
           Education
         </Text>
         <Timeline active={education.length}>
@@ -44,7 +51,14 @@ export default function Overview() {
         </Timeline>
       </Grid.Col>
       <Grid.Col xs={12} sm={6}>
-        <Text color="blue.1" size="xl" align="center" mb="15px" fw="bold">
+        <Text
+          color="blue.1"
+          size="xl"
+          align="center"
+          mb="15px"
+          fw="bold"
+          underline
+        >
           Career
         </Text>
         <Timeline active={careerSummary.length}>

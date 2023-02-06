@@ -47,7 +47,7 @@ export default function CareerSummary() {
         image={
           <Image
             style={{ borderRadius: '25px' }}
-            src={`/${details.image}_tiny.png`}
+            src={`/${details.image}.png`}
             alt={`${details.company} logo`}
             fill
           />
