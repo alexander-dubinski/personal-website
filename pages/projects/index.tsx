@@ -16,6 +16,8 @@ import {
   Divider,
   Group,
   Box,
+  AccordionProps,
+  GridProps,
 } from '@mantine/core';
 import DownChevron from '@/src/icons/DownChevron.svg';
 import ListView from '@/src/icons/ListView.svg';
@@ -36,6 +38,10 @@ export default function Projects({ stars }: ProjectsProps) {
   const [projectView, setProjectView] = useState<ProjectView>(ProjectView.List);
   const [search, setSearch] = useState<string>('');
   const Wrapper = projectView === ProjectView.List ? Accordion : Grid;
+  const wrapperProps =
+    projectView === ProjectView.List
+      ? { chevron: <DownChevron />, chevronSize: 40, variant: 'filled' }
+      : {};
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.currentTarget.value;
@@ -105,7 +111,7 @@ export default function Projects({ stars }: ProjectsProps) {
           </Grid.Col>
         </Grid>
         <Divider m="15px 0" color="blue" />
-        <Wrapper chevron={<DownChevron />} chevronSize={40} variant="filled">
+        <Wrapper {...(wrapperProps as AccordionProps & GridProps)}>
           {currentProjects.map((project) =>
             projectView === ProjectView.List ? (
               <ProjectListItem key={project.id} {...project} />

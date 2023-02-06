@@ -13,7 +13,7 @@ export default function ProjectListItem({
   return (
     <Accordion.Item value={id}>
       <Accordion.Control>
-        <Group noWrap>
+        <Group>
           <Box>
             <Image
               style={{ borderRadius: '8px' }}
