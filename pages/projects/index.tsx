@@ -1,40 +1,45 @@
 import StarryBackground, {
   StarryBackgroundProps,
-} from '@/src/StarryBackground';
+} from '@/src/components/StarryBackground';
 import { getStarField } from '@/src/util/stars';
 import Head from 'next/head';
-import PageContentBox from '@/src/PageContentBox';
-import { projects } from '@/src/data/projects';
+import PageContentBox from '@/src/components/PageContentBox';
 import ProjectListItem from '@/src/projects/ProjectListItem';
 import { ChangeEvent, useState } from 'react';
 import {
   Accordion,
-  ActionIcon,
-  Grid,
-  TextInput,
-  Text,
-  Divider,
-  Group,
-  Box,
   AccordionProps,
+  ActionIcon,
+  Box,
+  Divider,
+  Grid,
   GridProps,
+  Group,
+  Text,
+  TextInput,
 } from '@mantine/core';
 import DownChevron from '@/src/icons/DownChevron.svg';
 import ListView from '@/src/icons/ListView.svg';
 import GridView from '@/src/icons/GridView.svg';
 import Search from '@/src/icons/Search.svg';
 import ProjectGridItem from '@/src/projects/ProjectGridItem';
-import { projectsFuse } from '@/src/search/search';
+import { DocumentType, getAllForDocumentType } from '@/src/cms/client';
+import Fuse from 'fuse.js';
+import { DAYS } from '@/src/util/time';
 
 enum ProjectView {
   List,
   Grid,
 }
 
-interface ProjectsProps extends StarryBackgroundProps {}
-export default function Projects({ stars }: ProjectsProps) {
-  const [currentProjects, setCurrentProjects] =
-    useState<ProjectContent[]>(projects);
+interface ProjectsProps extends StarryBackgroundProps {
+  projects: Project[];
+}
+export default function Projects({ stars, projects }: ProjectsProps) {
+  const [currentProjects, setCurrentProjects] = useState<Project[]>(projects);
+  const [projectsFuse] = useState<Fuse<Project>>(
+    new Fuse(projects, { keys: ['name', 'description', 'startYear'] })
+  );
   const [projectView, setProjectView] = useState<ProjectView>(ProjectView.List);
   const [search, setSearch] = useState<string>('');
   const Wrapper = projectView === ProjectView.List ? Accordion : Grid;
@@ -114,9 +119,9 @@ export default function Projects({ stars }: ProjectsProps) {
         <Wrapper {...(wrapperProps as AccordionProps & GridProps)}>
           {currentProjects.map((project) =>
             projectView === ProjectView.List ? (
-              <ProjectListItem key={project.id} {...project} />
+              <ProjectListItem key={project.slug.current} {...project} />
             ) : (
-              <ProjectGridItem key={project.id} {...project} />
+              <ProjectGridItem key={project.slug.current} {...project} />
             )
           )}
         </Wrapper>
@@ -127,9 +132,19 @@ export default function Projects({ stars }: ProjectsProps) {
 }
 
 export async function getStaticProps() {
+  const projects: Project[] = await getAllForDocumentType<Project>(
+    DocumentType.Project
+  );
+
+  if (!projects || projects.length < 1) {
+    throw Error('No projects found for /projects');
+  }
+
   return {
     props: {
+      projects,
       stars: getStarField(350),
     },
+    revalidate: 3 * DAYS,
   };
 }

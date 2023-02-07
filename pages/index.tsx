@@ -1,6 +1,6 @@
 import StarryBackground, {
   StarryBackgroundProps,
-} from '@/src/StarryBackground';
+} from '@/src/components/StarryBackground';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Box, Title, Button } from '@mantine/core';

@@ -1,4 +1,4 @@
-import { Star, starRadiusRange } from '@/src/StarryBackground';
+import { Star, starRadiusRange } from '@/src/components/StarryBackground';
 
 export function getStarField(size: number): Star[] {
   const stars: Star[] = [];

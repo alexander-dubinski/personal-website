@@ -1,23 +1,24 @@
 import { Accordion, Group, Box, Text, Button, Badge } from '@mantine/core';
 import Image from 'next/image';
 import Link from 'next/link';
+import { urlForImage } from '@/src/cms/images';
 
 export default function ProjectListItem({
-  id,
+  slug,
   name,
   description,
   mainImage,
   tools,
   startYear,
-}: ProjectContent) {
+}: Project) {
   return (
-    <Accordion.Item value={id}>
+    <Accordion.Item value={slug.current}>
       <Accordion.Control>
         <Group>
           <Box>
             <Image
               style={{ borderRadius: '8px' }}
-              src={mainImage.url}
+              src={urlForImage(mainImage.asset).url()}
               alt={mainImage.alt}
               width={148}
               height={74}
@@ -40,7 +41,7 @@ export default function ProjectListItem({
       </Accordion.Control>
       <Accordion.Panel>
         <Box m="0 0 15px 0">{description}</Box>
-        <Link href={`/projects/${id}`}>
+        <Link href={`/projects/${slug.current}`}>
           <Button variant="default" color="blue">
             Click Here to See More
           </Button>

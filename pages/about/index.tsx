@@ -1,11 +1,11 @@
 import StarryBackground, {
   StarryBackgroundProps,
-} from '@/src/StarryBackground';
+} from '@/src/components/StarryBackground';
 import { getStarField } from '@/src/util/stars';
 import Head from 'next/head';
 import { Box, Title, Text } from '@mantine/core';
 import Image from 'next/image';
-import PageContentBox from '@/src/PageContentBox';
+import PageContentBox from '@/src/components/PageContentBox';
 
 interface AboutProps extends StarryBackgroundProps {}
 export default function About({ stars }: AboutProps) {

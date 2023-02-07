@@ -1,24 +1,25 @@
 import { Grid, Box, Text, Card, Badge } from '@mantine/core';
 import Image from 'next/image';
 import Link from 'next/link';
+import { urlForImage } from '@/src/cms/images';
 
 export default function ProjectGridItem({
-  id,
+  slug,
   name,
   description,
   mainImage,
   tools,
   startYear,
-}: ProjectContent) {
+}: Project) {
   return (
     <Grid.Col xs={12} sm={6}>
-      <Link href={`/projects/${id}`}>
+      <Link href={`/projects/${slug.current}`}>
         <Card radius="md" p="md" shadow="lg" withBorder>
           <Card.Section>
             <Box pos="relative" pt="50%">
               <Image
                 style={{ borderRadius: '8px' }}
-                src={mainImage.url}
+                src={urlForImage(mainImage.asset).url()}
                 alt={mainImage.alt}
                 fill
               />

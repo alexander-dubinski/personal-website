@@ -1,4 +1,6 @@
 interface Image {
-  url: string;
+  _type: string;
   alt: string;
+  link?: string;
+  asset: Asset;
 }

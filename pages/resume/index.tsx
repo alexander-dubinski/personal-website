@@ -1,10 +1,10 @@
 import StarryBackground, {
   StarryBackgroundProps,
-} from '@/src/StarryBackground';
+} from '@/src/components/StarryBackground';
 import { getStarField } from '@/src/util/stars';
 import Head from 'next/head';
 import { Tabs, Box } from '@mantine/core';
-import PageContentBox from '@/src/PageContentBox';
+import PageContentBox from '@/src/components/PageContentBox';
 import ResumeOverview from '@/src/icons/ResumeOverview.svg';
 import School from '@/src/icons/School.svg';
 import Work from '@/src/icons/Work.svg';
