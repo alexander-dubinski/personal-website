@@ -34,6 +34,9 @@ export default function StarryBackground({ stars }: StarryBackgroundProps) {
       }
     }
   });
+
+  if (!stars) return null;
+
   return (
     <>
       {stars.map(({ x, y, r, opacity }, i) => (

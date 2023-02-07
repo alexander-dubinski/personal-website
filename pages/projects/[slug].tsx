@@ -22,11 +22,14 @@ export default function Project({ project, stars }: ProjectProps) {
 
   return (
     <>
-      <Head>
-        <title>{project.name || ''}</title>
-      </Head>
+      {!router.isFallback && (
+        <Head>
+          <title>{project.name}</title>
+        </Head>
+      )}
       <PageContentBox>
         <LoadingOverlay visible={router.isFallback} />
+        {!router.isFallback && <div>{project.description}</div>}
       </PageContentBox>
       <StarryBackground stars={stars} />
     </>
