@@ -1,8 +1,12 @@
 import { Grid, Text, Timeline, TimelineItem, Avatar } from '@mantine/core';
-import { education } from '@/src/data/education';
-import { careerSummary } from '@/src/data/career';
+import { urlForImage } from '@/src/cms/images';
 
-export default function Overview() {
+interface OverviewProps {
+  career: CareerEntry[];
+  education: EducationEntry[];
+}
+
+export default function Overview({ career, education }: OverviewProps) {
   return (
     <Grid>
       <Grid.Col xs={12}>
@@ -42,7 +46,12 @@ export default function Overview() {
               title={`${major} - ${degree}`}
               key={`${school}_${degree}`}
               bullet={
-                <Avatar src={`/${image}_tiny.png`} size={24} radius="xl" />
+                <Avatar
+                  src={urlForImage(image.asset).size(24, 24).url()}
+                  size={24}
+                  alt={image.alt}
+                  radius="xl"
+                />
               }
             >
               <Text>{school}</Text>
@@ -61,14 +70,19 @@ export default function Overview() {
         >
           Career
         </Text>
-        <Timeline active={careerSummary.length}>
-          {careerSummary.map(({ company, title, image }) => (
+        <Timeline active={career.length}>
+          {career.map(({ company, title, image }) => (
             <TimelineItem
               sx={{ color: 'white' }}
               title={title}
               key={`${company}_${title}`}
               bullet={
-                <Avatar src={`/${image}_tiny.png`} size={24} radius="xl" />
+                <Avatar
+                  src={urlForImage(image.asset).size(24, 24).url()}
+                  size={24}
+                  alt={image.alt}
+                  radius="xl"
+                />
               }
             >
               <Text>{company}</Text>

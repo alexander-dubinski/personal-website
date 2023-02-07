@@ -2,6 +2,16 @@ import sanityClient from '@sanity/client';
 
 export enum DocumentType {
   Project = 'project',
+  Career = 'career',
+  Education = 'education',
+}
+export enum Order {
+  ASC = 'asc',
+  DESC = 'desc',
+}
+
+export enum OrderBy {
+  EndYear = 'endYear',
 }
 
 export const cmsClient = sanityClient({
@@ -14,6 +24,16 @@ export const cmsClient = sanityClient({
 
 export function getAllForDocumentType<T>(docType: DocumentType): Promise<T[]> {
   return cmsClient.fetch(`*[_type == "${docType}"]`);
+}
+
+export function getAllForDocumentTypeOrdered<T>(
+  docType: DocumentType,
+  orderBy: OrderBy,
+  order: Order
+): Promise<T[]> {
+  return cmsClient.fetch(
+    `*[_type == "${docType}"] | order(${orderBy} ${order})`
+  );
 }
 
 export function getProjectForSlug<T>(slug: string): Promise<T[]> {

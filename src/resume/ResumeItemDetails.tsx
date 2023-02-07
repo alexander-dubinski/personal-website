@@ -29,7 +29,7 @@ export default function ResumeItemDetails({
           width: '50%',
           display: 'inline-block',
           float: 'right',
-          marginRight: '1em',
+          marginLeft: '1.15em',
         }}
       >
         {image}

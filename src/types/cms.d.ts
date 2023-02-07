@@ -1,3 +1,8 @@
+interface CMSDocument {
+  _id: string;
+  _type: string;
+}
+
 interface Slug {
   _type: string;
   current: string;

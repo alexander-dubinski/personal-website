@@ -1,21 +1,21 @@
-interface EducationEntry {
+interface EducationEntry extends CMSDocument {
   degree: string;
   description: string;
   endYear: number;
   gpa: number;
-  image: string;
+  image: Image;
   major: string;
   school: string;
   startYear: number;
 }
 
-interface CareerEntry {
+interface CareerEntry extends CMSDocument {
   company: string;
   department: string;
   team: string;
   description: string;
   endYear: number;
-  image: string;
+  image: Image;
   startYear: number;
   title: string;
 }

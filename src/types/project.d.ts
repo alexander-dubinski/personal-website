@@ -1,6 +1,4 @@
-interface Project {
-  _id: string;
-  _type: string;
+interface Project extends CMSDocument {
   description: string;
   images?: Image[];
   mainImage: Image;

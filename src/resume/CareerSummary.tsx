@@ -1,18 +1,22 @@
 import { Grid, Avatar, Text } from '@mantine/core';
 import { useState } from 'react';
 import Image from 'next/image';
-import { careerSummary } from '@/src/data/career';
 import ResumeTimeline from '@/src/resume/ResumeTimeline';
 import ResumeTimelineItem from '@/src/resume/ResumeTimelineItem';
 import ResumeItemDetails from '@/src/resume/ResumeItemDetails';
+import { urlForImage } from '@/src/cms/images';
 
-export default function CareerSummary() {
+interface CareerOverviewProps {
+  career: CareerEntry[];
+}
+
+export default function CareerSummary({ career }: CareerOverviewProps) {
   const [activeCareer, setActiveCareer] = useState<number>(0);
-  const details = careerSummary[activeCareer];
+  const details = career[activeCareer];
   return (
     <Grid>
       <ResumeTimeline active={activeCareer}>
-        {careerSummary.map(
+        {career.map(
           (
             { company, title, startYear, endYear, department, team, image },
             idx
@@ -24,8 +28,9 @@ export default function CareerSummary() {
               bullet={
                 <Avatar
                   onClick={setActiveCareer.bind(null, idx)}
-                  src={`${image}_tiny.png`}
+                  src={urlForImage(image.asset).size(40, 40).url()}
                   radius="xl"
+                  alt={image.alt}
                   size={activeCareer === idx ? 40 : 22}
                 />
               }
@@ -47,8 +52,8 @@ export default function CareerSummary() {
         image={
           <Image
             style={{ borderRadius: '25px' }}
-            src={`/${details.image}.png`}
-            alt={`${details.company} logo`}
+            src={urlForImage(details.image.asset).url()}
+            alt={details.image.alt}
             fill
           />
         }

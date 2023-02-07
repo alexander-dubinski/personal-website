@@ -1,12 +1,15 @@
 import { Grid, Avatar, Text } from '@mantine/core';
-import { education } from '@/src/data/education';
 import { useState } from 'react';
 import Image from 'next/image';
 import ResumeTimeline from '@/src/resume/ResumeTimeline';
 import ResumeTimelineItem from '@/src/resume/ResumeTimelineItem';
 import ResumeItemDetails from '@/src/resume/ResumeItemDetails';
+import { urlForImage } from '@/src/cms/images';
 
-export default function Education() {
+interface EducationProps {
+  education: EducationEntry[];
+}
+export default function Education({ education }: EducationProps) {
   const [activeEducation, setActiveEducation] = useState<number>(0);
   const details = education[activeEducation];
   return (
@@ -21,8 +24,9 @@ export default function Education() {
               bullet={
                 <Avatar
                   onClick={setActiveEducation.bind(null, idx)}
-                  src={`${image}_tiny.png`}
+                  src={urlForImage(image.asset).size(40, 40).url()}
                   radius="xl"
+                  alt={image.alt}
                   size={activeEducation === idx ? 40 : 22}
                 />
               }
@@ -40,8 +44,8 @@ export default function Education() {
         image={
           <Image
             style={{ borderRadius: '25px' }}
-            src={`/${details.image}.png`}
-            alt={`${details.school} logo`}
+            src={urlForImage(details.image.asset).url()}
+            alt={details.image.alt}
             fill
           />
         }
