@@ -42,15 +42,19 @@ export default function CareerSummary({ career }: CareerOverviewProps) {
                 </Text>
               )}
               <Text>
-                {startYear} - {endYear || 'Present'}
+                {startYear} - {endYear === 9999 ? 'Present' : endYear}
               </Text>
             </ResumeTimelineItem>
           )
         )}
       </ResumeTimeline>
       <ResumeItemDetails
+        link={details.image.link}
         image={
           <Image
+            sizes="(min-width: 768px) 20vw,
+            (win-width: 576px) 25vw,
+            100vw"
             style={{ borderRadius: '25px' }}
             src={urlForImage(details.image.asset).url()}
             alt={details.image.alt}

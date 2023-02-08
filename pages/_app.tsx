@@ -34,6 +34,28 @@ const theme: MantineThemeOverride = {
       'rgba(13, 71, 161, 0.95)',
     ],
   },
+  components: {
+    List: {
+      styles: {
+        root: {
+          color: '#FFF',
+        },
+      },
+    },
+    Blockquote: {
+      styles: {
+        root: {
+          color: '#FFF',
+        },
+        cite: {
+          color: '#FFF',
+        },
+        icon: {
+          color: '#FFF',
+        },
+      },
+    },
+  },
 };
 
 export default function App({ Component, pageProps }: AppProps) {

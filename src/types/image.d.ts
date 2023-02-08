@@ -3,6 +3,8 @@ interface Image {
   alt: string;
   link?: string;
   asset: Asset;
+  caption?: string;
+  floatRight?: boolean;
 }
 
 interface ImageMetadata {

@@ -41,8 +41,12 @@ export default function Education({ education }: EducationProps) {
         )}
       </ResumeTimeline>
       <ResumeItemDetails
+        link={details.image.link}
         image={
           <Image
+            sizes="(min-width: 768px) 20vw,
+            (win-width: 576px) 25vw,
+            100vw"
             style={{ borderRadius: '25px' }}
             src={urlForImage(details.image.asset).url()}
             alt={details.image.alt}

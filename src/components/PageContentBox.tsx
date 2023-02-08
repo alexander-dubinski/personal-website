@@ -12,7 +12,7 @@ export default function PageContentBox({ children }: PropsWithChildren) {
         width: '100%',
         height: 'calc(100% - 200px)',
         transform: 'translateX(-50%)',
-        backgroundColor: theme.colors.alphaDarkBlue[8],
+        backgroundColor: theme.colors.alphaDarkBlue[9],
         borderRadius: '15px',
         zIndex: 1,
         padding: '1em',

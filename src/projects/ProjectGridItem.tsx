@@ -19,6 +19,10 @@ export default function ProjectGridItem({
           <Card.Section>
             <Box pos="relative" pt="50%">
               <Image
+                priority
+                sizes="(min-width: 768px) 50vw,
+                (win-width: 576px) 75vw,
+                100vw"
                 style={{ borderRadius: '8px' }}
                 src={urlForImage(mainImage.asset).url()}
                 alt={mainImage.alt}

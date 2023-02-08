@@ -1,14 +1,17 @@
 import { Box, Grid, Text } from '@mantine/core';
 import { ReactNode } from 'react';
+import Link from 'next/link';
 
 interface ResumeItemDetailsProps {
   image: ReactNode;
   description: string;
+  link?: string;
 }
 
 export default function ResumeItemDetails({
   image,
   description,
+  link,
 }: ResumeItemDetailsProps) {
   return (
     <Grid.Col xs={12} sm={6}>
@@ -25,14 +28,30 @@ export default function ResumeItemDetails({
       <Box
         sx={{
           position: 'relative',
-          paddingTop: '50%',
           width: '50%',
+          paddingTop: '50%',
           display: 'inline-block',
           float: 'right',
           marginLeft: '1.15em',
         }}
       >
-        {image}
+        {link ? (
+          <Link
+            href={link}
+            target="_blank"
+            style={{
+              position: 'absolute',
+              width: '100%',
+              paddingTop: '100%',
+              top: 0,
+              left: 0,
+            }}
+          >
+            {image}
+          </Link>
+        ) : (
+          image
+        )}
       </Box>
       <Text size="lg">{description}</Text>
     </Grid.Col>

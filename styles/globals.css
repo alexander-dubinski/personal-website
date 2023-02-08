@@ -25,6 +25,15 @@ a {
   border-radius: 50%;
 }
 
+.text-link {
+  text-decoration: underline;
+  color: #BBDEFB;
+}
+
+.text-link:hover {
+  color: #FFF;
+}
+
 header {
   position: fixed;
   top: 0;

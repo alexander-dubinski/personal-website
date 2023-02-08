@@ -38,6 +38,9 @@ export default function About({ stars }: AboutProps) {
             style={{ borderRadius: '25px' }}
             src="/ProfilePicture.jpg"
             alt="profile"
+            sizes="(min-width: 768px) 20vw,
+            (win-width: 576px) 33vw,
+            100vw"
             fill
           />
         </Box>
