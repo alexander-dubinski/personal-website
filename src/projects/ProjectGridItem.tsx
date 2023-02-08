@@ -2,6 +2,7 @@ import { Grid, Box, Text, Card, Badge } from '@mantine/core';
 import Image from 'next/image';
 import Link from 'next/link';
 import { urlForImage } from '@/src/cms/images';
+import { ProjectEntry } from '@/src/types/project';
 
 export default function ProjectGridItem({
   slug,
@@ -10,7 +11,7 @@ export default function ProjectGridItem({
   mainImage,
   tools,
   startYear,
-}: Project) {
+}: ProjectEntry) {
   return (
     <Grid.Col xs={12} sm={6}>
       <Link href={`/projects/${slug.current}`}>

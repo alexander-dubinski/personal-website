@@ -26,6 +26,7 @@ import ProjectGridItem from '@/src/projects/ProjectGridItem';
 import { DocumentType, getAllForDocumentType } from '@/src/cms/client';
 import Fuse from 'fuse.js';
 import { DAYS } from '@/src/util/time';
+import { ProjectEntry } from '@/src/types/project';
 
 enum ProjectView {
   List,
@@ -33,11 +34,12 @@ enum ProjectView {
 }
 
 interface ProjectsProps extends StarryBackgroundProps {
-  projects: Project[];
+  projects: ProjectEntry[];
 }
 export default function Projects({ stars, projects }: ProjectsProps) {
-  const [currentProjects, setCurrentProjects] = useState<Project[]>(projects);
-  const [projectsFuse] = useState<Fuse<Project>>(
+  const [currentProjects, setCurrentProjects] =
+    useState<ProjectEntry[]>(projects);
+  const [projectsFuse] = useState<Fuse<ProjectEntry>>(
     new Fuse(projects, { keys: ['name', 'description', 'startYear'] })
   );
   const [projectView, setProjectView] = useState<ProjectView>(ProjectView.List);
@@ -132,7 +134,7 @@ export default function Projects({ stars, projects }: ProjectsProps) {
 }
 
 export async function getStaticProps() {
-  const projects: Project[] = await getAllForDocumentType<Project>(
+  const projects: ProjectEntry[] = await getAllForDocumentType<ProjectEntry>(
     DocumentType.Project
   );
 

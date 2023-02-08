@@ -2,6 +2,7 @@ import { Accordion, Group, Box, Text, Button, Badge } from '@mantine/core';
 import Image from 'next/image';
 import Link from 'next/link';
 import { urlForImage } from '@/src/cms/images';
+import { ProjectEntry } from '@/src/types/project';
 
 export default function ProjectListItem({
   slug,
@@ -10,7 +11,7 @@ export default function ProjectListItem({
   mainImage,
   tools,
   startYear,
-}: Project) {
+}: ProjectEntry) {
   return (
     <Accordion.Item value={slug.current}>
       <Accordion.Control>

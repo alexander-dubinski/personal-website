@@ -1,4 +1,6 @@
-interface Project extends CMSDocument {
+import { PortableTextBlock } from '@portabletext/types';
+
+interface ProjectEntry extends CMSDocument {
   description: string;
   images?: Image[];
   mainImage: Image;
@@ -6,4 +8,5 @@ interface Project extends CMSDocument {
   slug: Slug;
   startYear: number;
   tools: string[];
+  body?: PortableTextBlock[];
 }

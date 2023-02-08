@@ -12,9 +12,11 @@ import PageContentBox from '@/src/components/PageContentBox';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { LoadingOverlay } from '@mantine/core';
+import { ProjectEntry } from '@/src/types/project';
+import DocumentRenderer from '@/src/cms/documents/DocumentRenderer';
 
 interface ProjectProps extends StarryBackgroundProps {
-  project: Project;
+  project: ProjectEntry;
 }
 
 export default function Project({ project, stars }: ProjectProps) {
@@ -29,7 +31,7 @@ export default function Project({ project, stars }: ProjectProps) {
       )}
       <PageContentBox>
         <LoadingOverlay visible={router.isFallback} />
-        {!router.isFallback && <div>{project.description}</div>}
+        {!router.isFallback && <DocumentRenderer document={project.body} />}
       </PageContentBox>
       <StarryBackground stars={stars} />
     </>
@@ -37,7 +39,7 @@ export default function Project({ project, stars }: ProjectProps) {
 }
 
 export async function getStaticPaths() {
-  const projects: Project[] = await getAllForDocumentType<Project>(
+  const projects: ProjectEntry[] = await getAllForDocumentType<ProjectEntry>(
     DocumentType.Project
   );
 
@@ -57,7 +59,7 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
   const slug = ctx.params?.slug;
   if (!slug) throw Error('Slug not found for /projects/{slug}');
 
-  const project = await getProjectForSlug<Project>(slug as string);
+  const project = await getProjectForSlug<ProjectEntry>(slug as string);
 
   if (!project || project.length < 1 || project.length > 1) {
     throw Error(`Incorrect number of projects for /projects/${slug}`);

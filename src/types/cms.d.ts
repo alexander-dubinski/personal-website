@@ -9,6 +9,8 @@ interface Slug {
 }
 
 interface Asset {
-  _ref: string;
+  _ref?: string;
   _type: string;
+  _id?: string;
+  metadata?: ImageMetadata;
 }

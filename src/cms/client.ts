@@ -23,7 +23,7 @@ export const cmsClient = sanityClient({
 });
 
 export function getAllForDocumentType<T>(docType: DocumentType): Promise<T[]> {
-  return cmsClient.fetch(`*[_type == "${docType}"]`);
+  return cmsClient.fetch(`*[_type == "${docType}"]{..., body[]{}}`);
 }
 
 export function getAllForDocumentTypeOrdered<T>(
@@ -32,10 +32,12 @@ export function getAllForDocumentTypeOrdered<T>(
   order: Order
 ): Promise<T[]> {
   return cmsClient.fetch(
-    `*[_type == "${docType}"] | order(${orderBy} ${order})`
+    `*[_type == "${docType}"]{..., body[]{}} | order(${orderBy} ${order})`
   );
 }
 
 export function getProjectForSlug<T>(slug: string): Promise<T[]> {
-  return cmsClient.fetch(`*[_type == "project" && slug.current == "${slug}"]`);
+  return cmsClient.fetch(
+    `*[_type == "project" && slug.current == "${slug}"]{..., body[]{..., asset->{_id, _type, metadata{dimensions}}}}`
+  );
 }

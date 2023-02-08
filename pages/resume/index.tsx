@@ -13,7 +13,6 @@ import Overview from '@/src/resume/Overview';
 import Education from '@/src/resume/Education';
 import CareerSummary from '@/src/resume/CareerSummary';
 import { DAYS } from '@/src/util/time';
-import { education } from '@/src/data/education';
 import {
   DocumentType,
   getAllForDocumentTypeOrdered,
@@ -100,8 +99,6 @@ export async function getStaticProps() {
       OrderBy.EndYear,
       Order.DESC
     );
-
-  console.log(career, education);
 
   if (!education || !career || education.length < 1 || career.length < 1) {
     throw Error('Failed to fetch education or career entries');
