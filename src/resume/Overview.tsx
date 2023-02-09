@@ -1,4 +1,5 @@
-import { Grid, Text, Timeline, TimelineItem, Avatar } from '@mantine/core';
+import { Avatar, Grid, Text, Timeline, TimelineItem } from '@mantine/core';
+
 import { urlForImage } from '@/src/cms/images';
 
 interface OverviewProps {

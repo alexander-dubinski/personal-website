@@ -1,5 +1,6 @@
-import { Box, Sx, Text } from '@mantine/core';
 import { PropsWithChildren } from 'react';
+
+import { Box, Sx, Text } from '@mantine/core';
 
 export enum ImageType {
   FullWidthImage = 'fullWidthImage',

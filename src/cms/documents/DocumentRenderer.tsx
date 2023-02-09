@@ -1,10 +1,13 @@
-import { PortableTextComponents, PortableText } from '@portabletext/react';
+import { PortableText, PortableTextComponents } from '@portabletext/react';
 import { PortableTextBlock } from '@portabletext/types';
-import { urlForImage } from '@/src/cms/images';
+
+import { Blockquote, Box, List, Text, Title } from '@mantine/core';
+
 import NextImage from 'next/image';
 import Link from 'next/link';
+
 import ImageContainer, { ImageType } from '@/src/cms/documents/ImageContainer';
-import { Blockquote, List, Text, Title, Box } from '@mantine/core';
+import { urlForImage } from '@/src/cms/images';
 
 interface DocumentRendererProps {
   document: PortableTextBlock[] | undefined;

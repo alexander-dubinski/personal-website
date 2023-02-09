@@ -1,19 +1,21 @@
-import { getStarField } from '@/src/util/stars';
+import { LoadingOverlay } from '@mantine/core';
+
 import { GetStaticPropsContext } from 'next';
-import StarryBackground, {
-  StarryBackgroundProps,
-} from '@/src/components/StarryBackground';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+
 import {
   DocumentType,
   getAllForDocumentType,
   getProjectForSlug,
 } from '@/src/cms/client';
-import PageContentBox from '@/src/components/PageContentBox';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { LoadingOverlay } from '@mantine/core';
-import { ProjectEntry } from '@/src/types/project';
 import DocumentRenderer from '@/src/cms/documents/DocumentRenderer';
+import PageContentBox from '@/src/components/PageContentBox';
+import StarryBackground, {
+  StarryBackgroundProps,
+} from '@/src/components/StarryBackground';
+import { ProjectEntry } from '@/src/types/project';
+import { getStarField } from '@/src/util/stars';
 
 interface ProjectProps extends StarryBackgroundProps {
   project: ProjectEntry;

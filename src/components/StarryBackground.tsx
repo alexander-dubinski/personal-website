@@ -1,4 +1,4 @@
-import { useAnimationFrame, motion, TargetAndTransition } from 'framer-motion';
+import { TargetAndTransition, motion, useAnimationFrame } from 'framer-motion';
 import { useState } from 'react';
 
 export const starRadiusRange = 6;

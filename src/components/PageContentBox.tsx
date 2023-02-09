@@ -1,5 +1,6 @@
-import { Box } from '@mantine/core';
 import { PropsWithChildren } from 'react';
+
+import { Box } from '@mantine/core';
 
 export default function PageContentBox({ children }: PropsWithChildren) {
   return (

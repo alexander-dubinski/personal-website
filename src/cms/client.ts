@@ -5,6 +5,7 @@ export enum DocumentType {
   Career = 'career',
   Education = 'education',
 }
+
 export enum Order {
   ASC = 'asc',
   DESC = 'desc',

@@ -1,5 +1,7 @@
-import { Box, Grid, Text } from '@mantine/core';
 import { ReactNode } from 'react';
+
+import { Box, Grid, Text } from '@mantine/core';
+
 import Link from 'next/link';
 
 interface ResumeItemDetailsProps {

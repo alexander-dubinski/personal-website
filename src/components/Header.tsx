@@ -1,6 +1,7 @@
+import { Box } from '@mantine/core';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import { Box } from '@mantine/core';
 
 const headerImageStyles = { backgroundColor: '#212121', borderRadius: '50%' };
 

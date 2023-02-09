@@ -1,6 +1,8 @@
-import { Grid, Box, Text, Card, Badge } from '@mantine/core';
+import { Badge, Box, Card, Grid, Text } from '@mantine/core';
+
 import Image from 'next/image';
 import Link from 'next/link';
+
 import { urlForImage } from '@/src/cms/images';
 import { ProjectEntry } from '@/src/types/project';
 

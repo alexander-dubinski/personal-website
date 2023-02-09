@@ -1,14 +1,18 @@
-import { Grid, Avatar, Text } from '@mantine/core';
 import { useState } from 'react';
+
+import { Avatar, Grid, Text } from '@mantine/core';
+
 import Image from 'next/image';
+
+import { urlForImage } from '@/src/cms/images';
+import ResumeItemDetails from '@/src/resume/ResumeItemDetails';
 import ResumeTimeline from '@/src/resume/ResumeTimeline';
 import ResumeTimelineItem from '@/src/resume/ResumeTimelineItem';
-import ResumeItemDetails from '@/src/resume/ResumeItemDetails';
-import { urlForImage } from '@/src/cms/images';
 
 interface EducationProps {
   education: EducationEntry[];
 }
+
 export default function Education({ education }: EducationProps) {
   const [activeEducation, setActiveEducation] = useState<number>(0);
   const details = education[activeEducation];

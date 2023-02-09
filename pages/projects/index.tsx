@@ -1,11 +1,6 @@
-import StarryBackground, {
-  StarryBackgroundProps,
-} from '@/src/components/StarryBackground';
-import { getStarField } from '@/src/util/stars';
-import Head from 'next/head';
-import PageContentBox from '@/src/components/PageContentBox';
-import ProjectListItem from '@/src/projects/ProjectListItem';
+import Fuse from 'fuse.js';
 import { ChangeEvent, useState } from 'react';
+
 import {
   Accordion,
   AccordionProps,
@@ -18,15 +13,23 @@ import {
   Text,
   TextInput,
 } from '@mantine/core';
+
+import Head from 'next/head';
+
+import { DocumentType, getAllForDocumentType } from '@/src/cms/client';
+import PageContentBox from '@/src/components/PageContentBox';
+import StarryBackground, {
+  StarryBackgroundProps,
+} from '@/src/components/StarryBackground';
 import DownChevron from '@/src/icons/DownChevron.svg';
-import ListView from '@/src/icons/ListView.svg';
 import GridView from '@/src/icons/GridView.svg';
+import ListView from '@/src/icons/ListView.svg';
 import Search from '@/src/icons/Search.svg';
 import ProjectGridItem from '@/src/projects/ProjectGridItem';
-import { DocumentType, getAllForDocumentType } from '@/src/cms/client';
-import Fuse from 'fuse.js';
-import { DAYS } from '@/src/util/time';
+import ProjectListItem from '@/src/projects/ProjectListItem';
 import { ProjectEntry } from '@/src/types/project';
+import { getStarField } from '@/src/util/stars';
+import { DAYS } from '@/src/util/time';
 
 enum ProjectView {
   List,
@@ -36,6 +39,7 @@ enum ProjectView {
 interface ProjectsProps extends StarryBackgroundProps {
   projects: ProjectEntry[];
 }
+
 export default function Projects({ stars, projects }: ProjectsProps) {
   const [currentProjects, setCurrentProjects] =
     useState<ProjectEntry[]>(projects);

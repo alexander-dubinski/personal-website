@@ -1,5 +1,6 @@
-import { Grid, Timeline, Text } from '@mantine/core';
 import { PropsWithChildren } from 'react';
+
+import { Grid, Text, Timeline } from '@mantine/core';
 
 interface ResumeTimelineProps extends PropsWithChildren {
   active: number;

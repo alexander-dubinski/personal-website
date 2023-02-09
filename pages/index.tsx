@@ -1,11 +1,13 @@
+import { Box, Button, Title } from '@mantine/core';
+
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
+
 import StarryBackground, {
   StarryBackgroundProps,
 } from '@/src/components/StarryBackground';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Box, Title, Button } from '@mantine/core';
 import { getStarField } from '@/src/util/stars';
-import Head from 'next/head';
 
 interface HomeProps extends StarryBackgroundProps {}
 

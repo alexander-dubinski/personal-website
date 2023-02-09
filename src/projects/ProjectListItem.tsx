@@ -1,6 +1,8 @@
-import { Accordion, Group, Box, Text, Button, Badge } from '@mantine/core';
+import { Accordion, Badge, Box, Button, Group, Text } from '@mantine/core';
+
 import Image from 'next/image';
 import Link from 'next/link';
+
 import { urlForImage } from '@/src/cms/images';
 import { ProjectEntry } from '@/src/types/project';
 

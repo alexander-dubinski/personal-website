@@ -1,7 +1,10 @@
 import '@/styles/globals.css';
+
+import { MantineProvider, MantineThemeOverride } from '@mantine/core';
+
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { MantineProvider, MantineThemeOverride } from '@mantine/core';
+
 import Header from '@/src/components/Header';
 
 const theme: MantineThemeOverride = {

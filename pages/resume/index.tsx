@@ -1,24 +1,27 @@
+import { ReactNode } from 'react';
+
+import { Box, Tabs } from '@mantine/core';
+
+import Head from 'next/head';
+
+import {
+  DocumentType,
+  Order,
+  OrderBy,
+  getAllForDocumentTypeOrdered,
+} from '@/src/cms/client';
+import PageContentBox from '@/src/components/PageContentBox';
 import StarryBackground, {
   StarryBackgroundProps,
 } from '@/src/components/StarryBackground';
-import { getStarField } from '@/src/util/stars';
-import Head from 'next/head';
-import { Box, Tabs } from '@mantine/core';
-import PageContentBox from '@/src/components/PageContentBox';
 import ResumeOverview from '@/src/icons/ResumeOverview.svg';
 import School from '@/src/icons/School.svg';
 import Work from '@/src/icons/Work.svg';
-import { ReactNode } from 'react';
-import Overview from '@/src/resume/Overview';
-import Education from '@/src/resume/Education';
 import CareerSummary from '@/src/resume/CareerSummary';
+import Education from '@/src/resume/Education';
+import Overview from '@/src/resume/Overview';
+import { getStarField } from '@/src/util/stars';
 import { DAYS } from '@/src/util/time';
-import {
-  DocumentType,
-  getAllForDocumentTypeOrdered,
-  OrderBy,
-  Order,
-} from '@/src/cms/client';
 
 interface Tab {
   label: string;
@@ -54,6 +57,7 @@ interface ResumeProps extends StarryBackgroundProps {
   career: CareerEntry[];
   education: EducationEntry[];
 }
+
 export default function Resume({ stars, career, education }: ResumeProps) {
   return (
     <>
