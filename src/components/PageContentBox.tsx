@@ -4,18 +4,18 @@ import { PropsWithChildren } from 'react';
 export default function PageContentBox({ children }: PropsWithChildren) {
   return (
     <Box
+      pos="absolute"
+      top="100px"
+      left="50%"
+      maw="960px"
+      w="100%"
+      h="calc(100% - 200px)"
+      p="1em"
       sx={(theme) => ({
-        position: 'absolute',
-        top: '100px',
-        left: '50%',
-        maxWidth: '960px',
-        width: '100%',
-        height: 'calc(100% - 200px)',
         transform: 'translateX(-50%)',
         backgroundColor: theme.colors.alphaDarkBlue[9],
         borderRadius: '15px',
         zIndex: 1,
-        padding: '1em',
         color: 'white',
         overflowY: 'auto',
         '@media (max-width: 620px)': {

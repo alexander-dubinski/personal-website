@@ -22,14 +22,14 @@ export default function Home({ stars }: HomeProps) {
         <title>Alexander Dubinski - Home</title>
       </Head>
       <Box
+        pos="relative"
+        top="50%"
         sx={{
           zIndex: 1,
-          position: 'relative',
-          top: '50%',
           transform: 'translateY(-50%)',
         }}
       >
-        <Box sx={{ textAlign: 'center' }}>
+        <Box ta="center">
           <Image
             priority
             style={{ borderRadius: '25px' }}
@@ -39,11 +39,11 @@ export default function Home({ stars }: HomeProps) {
             height={300}
           />
           <Box
+            m="20px auto 16px auto"
+            w="360px"
+            p="15px 0"
             sx={(theme) => ({
-              margin: '20px auto 16px auto',
               backgroundColor: theme.colors.alphaDarkBlue[8],
-              width: '360px',
-              padding: '15px 0',
               borderRadius: '10px',
             })}
           >

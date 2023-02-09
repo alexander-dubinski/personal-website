@@ -26,13 +26,13 @@ export default function ResumeItemDetails({
         Details
       </Text>
       <Box
+        pos="relative"
+        w="50%"
+        pt="50%"
+        display="inline-block"
+        ml="1.15em"
         sx={{
-          position: 'relative',
-          width: '50%',
-          paddingTop: '50%',
-          display: 'inline-block',
           float: 'right',
-          marginLeft: '1.15em',
         }}
       >
         {link ? (

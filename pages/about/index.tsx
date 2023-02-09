@@ -16,13 +16,13 @@ export default function About({ stars }: AboutProps) {
       </Head>
       <PageContentBox>
         <Box
+          pos="relative"
+          pt="33.3333%"
+          w="33.3333%"
+          display="inline-block"
+          mr="1em"
           sx={{
-            position: 'relative',
-            paddingTop: '33.3333%',
-            width: '33.3333%',
-            display: 'inline-block',
             float: 'left',
-            marginRight: '1em',
             '@media (max-width: 620px)': {
               paddingTop: '50%',
               width: '50%',
