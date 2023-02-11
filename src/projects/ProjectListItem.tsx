@@ -1,3 +1,4 @@
+import { Carousel } from '@mantine/carousel';
 import { Accordion, Badge, Box, Button, Group, Text } from '@mantine/core';
 
 import Image from 'next/image';
@@ -13,6 +14,7 @@ export default function ProjectListItem({
   mainImage,
   tools,
   startYear,
+  images,
 }: ProjectEntry) {
   return (
     <Accordion.Item value={slug.current}>
@@ -24,16 +26,16 @@ export default function ProjectListItem({
               style={{ borderRadius: '8px' }}
               src={urlForImage(mainImage.asset).url()}
               alt={mainImage.alt}
-              width={148}
-              height={74}
+              width={260}
+              height={130}
             />
           </Box>
           <Box sx={{ color: 'white' }}>
             <Text size="lg" fw="bold">
               {name}
             </Text>
-            <Text>Started {startYear}</Text>
-            <Box mt="10px">
+            <Text color="blue.2">Started {startYear}</Text>
+            <Box mt="8px">
               {tools.map((tool) => (
                 <Badge mr="5px" variant="filled" color="blue.6" key={tool}>
                   {tool}
@@ -44,12 +46,54 @@ export default function ProjectListItem({
         </Group>
       </Accordion.Control>
       <Accordion.Panel>
-        <Box m="0 0 15px 0">{description}</Box>
-        <Link href={`/projects/${slug.current}`}>
-          <Button variant="default" color="blue">
-            Click Here to See More
-          </Button>
-        </Link>
+        <Box m="-10px 0 15px 0">{description}</Box>
+        {images?.length && (
+          <Carousel
+            height={225}
+            slideSize="33.333333%"
+            slideGap="sm"
+            breakpoints={[
+              { maxWidth: 'md', slideSize: '50%' },
+              { maxWidth: 'sm', slideSize: '100%', slideGap: 0 },
+            ]}
+            align="start"
+          >
+            {images.map((image, idx) => (
+              <Carousel.Slide key={`${image.asset._ref}_${idx}`}>
+                <Box
+                  pos="relative"
+                  h="225px"
+                  w="100%"
+                  sx={{ overflow: 'hidden' }}
+                >
+                  <Image
+                    src={urlForImage(image.asset).height(200).url()}
+                    alt={image.alt}
+                    sizes="(min-width: 768px) 25vw,
+                    (win-width: 576px) 33vw,
+                    100vw"
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  />
+                </Box>
+              </Carousel.Slide>
+            ))}
+          </Carousel>
+        )}
+        <Box mt="15px" ta="right">
+          <Link href={`/projects/${slug.current}`}>
+            <Button
+              variant="default"
+              color="blue.1"
+              size="lg"
+              sx={(theme) => ({
+                color: theme.colors.blue[1],
+              })}
+            >
+              {'Click Here to See More >>>'}
+            </Button>
+          </Link>
+        </Box>
       </Accordion.Panel>
     </Accordion.Item>
   );

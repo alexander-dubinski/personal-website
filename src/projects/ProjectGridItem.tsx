@@ -36,15 +36,15 @@ export default function ProjectGridItem({
             <Text size="lg" fw="bold">
               {name}
             </Text>
-            <Text>Started {startYear}</Text>
-            <Text>{description}</Text>
-            <Box mt="10px">
+            <Text color="blue.3">Started {startYear}</Text>
+            <Box mt="5px">
               {tools.map((tool) => (
                 <Badge mr="5px" variant="filled" color="blue.6" key={tool}>
                   {tool}
                 </Badge>
               ))}
             </Box>
+            <Text mt="10px">{description}</Text>
           </Box>
         </Card>
       </Link>
