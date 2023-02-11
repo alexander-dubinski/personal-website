@@ -7,6 +7,7 @@ import NextImage from 'next/image';
 import Link from 'next/link';
 
 import ImageContainer, { ImageType } from '@/src/cms/documents/ImageContainer';
+import ListContainer from '@/src/cms/documents/ListContainer';
 import { urlForImage } from '@/src/cms/images';
 
 interface DocumentRendererProps {
@@ -114,38 +115,14 @@ const customComponents: PortableTextComponents = {
   },
   list: {
     bullet: ({ children }) => (
-      <Box
-        display="inline-block"
-        w="75%"
-        m="15px auto"
-        pos="relative"
-        left="50%"
-        sx={{
-          transform: 'translateX(-50%)',
-          '@media (max-width: 576px)': {
-            width: '85%',
-          },
-        }}
-      >
+      <ListContainer>
         <List type="unordered">{children}</List>
-      </Box>
+      </ListContainer>
     ),
     number: ({ children }) => (
-      <Box
-        display="inline-block"
-        w="75%"
-        m="15px auto"
-        pos="relative"
-        left="50%"
-        sx={{
-          transform: 'translateX(-50%)',
-          '@media (max-width: 576px)': {
-            width: '85%',
-          },
-        }}
-      >
+      <ListContainer>
         <List type="ordered">{children}</List>
-      </Box>
+      </ListContainer>
     ),
   },
   listItem: {
