@@ -17,7 +17,10 @@ export default function ProjectListItem({
   images,
 }: ProjectEntry) {
   return (
-    <Accordion.Item value={slug.current}>
+    <Accordion.Item
+      value={slug.current}
+      sx={(theme) => ({ backgroundColor: theme.colors.dark[6] })}
+    >
       <Accordion.Control>
         <Group>
           <Box>
@@ -56,6 +59,7 @@ export default function ProjectListItem({
               { maxWidth: 'md', slideSize: '50%' },
               { maxWidth: 'sm', slideSize: '100%', slideGap: 0 },
             ]}
+            controlSize={34}
             align="start"
           >
             {images.map((image, idx) => (
