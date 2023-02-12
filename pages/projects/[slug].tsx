@@ -148,13 +148,13 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
 
   const project = await getProjectForSlug<ProjectEntry>(slug as string);
 
-  if (!project || project.length < 1 || project.length > 1) {
-    throw Error(`Incorrect number of projects for /projects/${slug}`);
+  if (!project || Object.keys(project).length === 0) {
+    return { notFound: true };
   }
 
   return {
     props: {
-      project: project[0],
+      project,
       stars: getStarField(350),
     },
   };

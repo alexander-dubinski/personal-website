@@ -43,7 +43,7 @@ export function getAllForDocumentTypeOrdered<T>(
 
 export function getProjectForSlug<T>(slug: string): Promise<T[]> {
   return cmsClient.fetch(
-    `*[_type == "project" && slug.current == "${slug}"]
+    `*[_type == "project" && slug.current == "${slug}"][0]
     {..., mainImage{..., asset->{_id, _type, metadata{lqip}}},
      images[]{..., asset->{_id, _type, metadata{lqip}}},
       body[]{..., asset->{_id, _type, metadata{dimensions, lqip}}}}`
