@@ -25,7 +25,6 @@ export default function ProjectListItem({
         <Group>
           <Box>
             <Image
-              priority
               style={{ borderRadius: '8px' }}
               src={urlForImage(mainImage.asset).url()}
               alt={mainImage.alt}

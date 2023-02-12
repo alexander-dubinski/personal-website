@@ -33,7 +33,6 @@ export default function ProjectGridItem({
             >
               <Carousel.Slide>
                 <Image
-                  priority
                   sizes="(min-width: 768px) 50vw,
                   (win-width: 576px) 75vw,
                   100vw"
@@ -46,7 +45,6 @@ export default function ProjectGridItem({
               {images?.map((image, idx) => (
                 <Carousel.Slide key={`${image.asset._ref}_${idx}`}>
                   <Image
-                    priority
                     sizes="(min-width: 768px) 50vw,
                     (win-width: 576px) 75vw,
                     100vw"

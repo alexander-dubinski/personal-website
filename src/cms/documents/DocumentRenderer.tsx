@@ -43,7 +43,6 @@ const customComponents: PortableTextComponents = {
             caption={caption}
           >
             <NextImage
-              priority
               sizes="(min-width: 768px) 75vw,
                 (win-width: 576px) 90vw,
                 100vw"
