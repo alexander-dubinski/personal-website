@@ -71,7 +71,7 @@ export default function ProjectListItem({
                   sx={{ overflow: 'hidden' }}
                 >
                   <Image
-                    src={urlForImage(image.asset).height(200).url()}
+                    src={urlForImage(image.asset).height(225).url()}
                     alt={image.alt}
                     sizes="(min-width: 768px) 25vw,
                     (win-width: 576px) 33vw,

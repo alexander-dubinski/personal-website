@@ -102,7 +102,7 @@ const customComponents: PortableTextComponents = {
   },
   block: {
     h1: ({ children }) => (
-      <Title mb="20px" color="blue.2" underline>
+      <Title mb="12px" color="blue.2" underline>
         {children}
       </Title>
     ),
