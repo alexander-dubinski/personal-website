@@ -1,23 +1,51 @@
-import { Box } from '@mantine/core';
+import { Box, Menu, Text } from '@mantine/core';
 
 import Image from 'next/image';
 import Link from 'next/link';
+
+import CaretDown from '@/src/icons/CaretDown.svg';
 
 const headerImageStyles = { backgroundColor: '#212121', borderRadius: '50%' };
 
 export default function Header() {
   return (
     <header>
-      <Link href="/">
-        <Image
-          priority
-          style={{ ...headerImageStyles, borderRadius: '10px' }}
-          src="/Logo.png"
-          alt="logo"
-          height={56}
-          width={48}
-        />
-      </Link>
+      <Box display="inline-block" pos="relative" w="60px">
+        <Link href="/">
+          <Image
+            priority
+            style={{ ...headerImageStyles, borderRadius: '10px' }}
+            src="/Logo.png"
+            alt="logo"
+            height={56}
+            width={48}
+          />
+        </Link>
+      </Box>
+      <Menu trigger="hover" position="bottom-start">
+        <Menu.Target>
+          <Box component="span">
+            <CaretDown
+              style={{
+                verticalAlign: 'middle',
+                backgroundColor: '#212427',
+                borderRadius: '50%',
+              }}
+            />
+          </Box>
+        </Menu.Target>
+        <Menu.Dropdown sx={{ '& a': { color: 'white' } }}>
+          <Menu.Item href="/about" component={Link}>
+            <Text size="xl">About</Text>
+          </Menu.Item>
+          <Menu.Item href="/resume" component={Link}>
+            <Text size="xl">Resume</Text>
+          </Menu.Item>
+          <Menu.Item href="/projects" component={Link}>
+            <Text size="xl">Projects</Text>
+          </Menu.Item>
+        </Menu.Dropdown>
+      </Menu>
       <Box
         component="span"
         sx={{
