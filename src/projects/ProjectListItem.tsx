@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 import { Carousel } from '@mantine/carousel';
 import { Accordion, Badge, Box, Button, Group, Text } from '@mantine/core';
 
@@ -7,6 +9,11 @@ import Link from 'next/link';
 import { urlForImage } from '@/src/cms/images';
 import { ProjectEntry } from '@/src/types/project';
 
+interface ProjectListItemProps extends ProjectEntry {
+  setModalOpen: Dispatch<SetStateAction<boolean>>;
+  setModalContent: Dispatch<SetStateAction<Image | null>>;
+}
+
 export default function ProjectListItem({
   slug,
   name,
@@ -15,7 +22,9 @@ export default function ProjectListItem({
   tools,
   startYear,
   images,
-}: ProjectEntry) {
+  setModalContent,
+  setModalOpen,
+}: ProjectListItemProps) {
   return (
     <Accordion.Item
       value={slug.current}
@@ -69,7 +78,17 @@ export default function ProjectListItem({
                   pos="relative"
                   h="225px"
                   w="100%"
-                  sx={{ overflow: 'hidden' }}
+                  sx={{
+                    overflow: 'hidden',
+                    '&:hover': {
+                      cursor: 'pointer',
+                      opacity: 0.85,
+                    },
+                  }}
+                  onClick={() => {
+                    setModalContent(image);
+                    setModalOpen(true);
+                  }}
                 >
                   <Image
                     placeholder="blur"

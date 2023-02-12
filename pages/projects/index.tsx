@@ -10,13 +10,16 @@ import {
   Grid,
   GridProps,
   Group,
+  Modal,
   Text,
   TextInput,
 } from '@mantine/core';
 
 import Head from 'next/head';
+import NextImage from 'next/image';
 
 import { DocumentType, getAllForDocumentType } from '@/src/cms/client';
+import { urlForImage } from '@/src/cms/images';
 import PageContentBox from '@/src/components/PageContentBox';
 import StarryBackground, {
   StarryBackgroundProps,
@@ -48,6 +51,8 @@ export default function Projects({ stars, projects }: ProjectsProps) {
   );
   const [projectView, setProjectView] = useState<ProjectView>(ProjectView.List);
   const [search, setSearch] = useState<string>('');
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [modalContent, setModalContent] = useState<Image | null>(null);
   const Wrapper = projectView === ProjectView.List ? Accordion : Grid;
   const wrapperProps =
     projectView === ProjectView.List
@@ -70,6 +75,30 @@ export default function Projects({ stars, projects }: ProjectsProps) {
       <Head>
         <title>Alexander Dubinski - Projects</title>
       </Head>
+      <Modal
+        size="lg"
+        centered
+        opened={modalOpen}
+        onClose={setModalOpen.bind(null, false)}
+      >
+        {modalContent && (
+          <Box
+            pos="relative"
+            pt={`${
+              (1 / (modalContent.asset.metadata?.dimensions.aspectRatio || 1)) *
+              100
+            }%`}
+          >
+            <NextImage
+              placeholder="blur"
+              blurDataURL={modalContent.asset.metadata?.lqip}
+              src={urlForImage(modalContent.asset).url()}
+              alt={modalContent.alt}
+              fill
+            />
+          </Box>
+        )}
+      </Modal>
       <PageContentBox>
         <Grid>
           <Grid.Col xs={12} sm={4} sx={{ height: '62px' }}>
@@ -125,9 +154,19 @@ export default function Projects({ stars, projects }: ProjectsProps) {
         <Wrapper {...(wrapperProps as AccordionProps & GridProps)}>
           {currentProjects.map((project) =>
             projectView === ProjectView.List ? (
-              <ProjectListItem key={project.slug.current} {...project} />
+              <ProjectListItem
+                key={project.slug.current}
+                setModalOpen={setModalOpen}
+                setModalContent={setModalContent}
+                {...project}
+              />
             ) : (
-              <ProjectGridItem key={project.slug.current} {...project} />
+              <ProjectGridItem
+                key={project.slug.current}
+                setModalOpen={setModalOpen}
+                setModalContent={setModalContent}
+                {...project}
+              />
             )
           )}
         </Wrapper>

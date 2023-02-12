@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 import { Carousel } from '@mantine/carousel';
 import { Badge, Box, Button, Card, Grid, Text } from '@mantine/core';
 
@@ -7,6 +9,11 @@ import Link from 'next/link';
 import { urlForImage } from '@/src/cms/images';
 import { ProjectEntry } from '@/src/types/project';
 
+interface ProjectGridItemProps extends ProjectEntry {
+  setModalOpen: Dispatch<SetStateAction<boolean>>;
+  setModalContent: Dispatch<SetStateAction<Image | null>>;
+}
+
 export default function ProjectGridItem({
   slug,
   name,
@@ -15,7 +22,9 @@ export default function ProjectGridItem({
   tools,
   startYear,
   images,
-}: ProjectEntry) {
+  setModalContent,
+  setModalOpen,
+}: ProjectGridItemProps) {
   return (
     <Grid.Col xs={12} sm={6}>
       <Card radius="md" p="md" shadow="lg" withBorder>
@@ -31,7 +40,18 @@ export default function ProjectGridItem({
               left="0"
               controlSize={34}
             >
-              <Carousel.Slide>
+              <Carousel.Slide
+                onClick={() => {
+                  setModalContent(mainImage);
+                  setModalOpen(true);
+                }}
+                sx={{
+                  '&:hover': {
+                    cursor: 'pointer',
+                    opacity: 0.85,
+                  },
+                }}
+              >
                 <Image
                   placeholder="blur"
                   blurDataURL={mainImage.asset.metadata?.lqip}
@@ -45,7 +65,19 @@ export default function ProjectGridItem({
                 />
               </Carousel.Slide>
               {images?.map((image, idx) => (
-                <Carousel.Slide key={`${image.asset._ref}_${idx}`}>
+                <Carousel.Slide
+                  key={`${image.asset._ref}_${idx}`}
+                  onClick={() => {
+                    setModalContent(image);
+                    setModalOpen(true);
+                  }}
+                  sx={{
+                    '&:hover': {
+                      cursor: 'pointer',
+                      opacity: 0.85,
+                    },
+                  }}
+                >
                   <Image
                     placeholder="blur"
                     blurDataURL={image.asset.metadata?.lqip}

@@ -1,9 +1,20 @@
+import { useState } from 'react';
+
 import { Carousel } from '@mantine/carousel';
-import { Badge, Box, Grid, LoadingOverlay, Text, Title } from '@mantine/core';
+import {
+  Badge,
+  Box,
+  Grid,
+  LoadingOverlay,
+  Modal,
+  Text,
+  Title,
+} from '@mantine/core';
 
 import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import NextImage from 'next/image';
 import { useRouter } from 'next/router';
 
 import {
@@ -26,6 +37,8 @@ interface ProjectProps extends StarryBackgroundProps {
 
 export default function Project({ project, stars }: ProjectProps) {
   const router = useRouter();
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [modalContent, setModalContent] = useState<Image | null>(null);
 
   return (
     <>
@@ -34,6 +47,30 @@ export default function Project({ project, stars }: ProjectProps) {
           <title>{project.name}</title>
         </Head>
       )}
+      <Modal
+        size="lg"
+        centered
+        opened={modalOpen}
+        onClose={setModalOpen.bind(null, false)}
+      >
+        {modalContent && (
+          <Box
+            pos="relative"
+            pt={`${
+              (1 / (modalContent.asset.metadata?.dimensions.aspectRatio || 1)) *
+              100
+            }%`}
+          >
+            <NextImage
+              placeholder="blur"
+              blurDataURL={modalContent.asset.metadata?.lqip}
+              src={urlForImage(modalContent.asset).url()}
+              alt={modalContent.alt}
+              fill
+            />
+          </Box>
+        )}
+      </Modal>
       <PageContentBox>
         <LoadingOverlay visible={router.isFallback} />
         {!router.isFallback && (
@@ -100,7 +137,17 @@ export default function Project({ project, stars }: ProjectProps) {
                     pos="relative"
                     h="250px"
                     w="100%"
-                    sx={{ overflow: 'hidden' }}
+                    sx={{
+                      overflow: 'hidden',
+                      '&:hover': {
+                        cursor: 'pointer',
+                        opacity: 0.85,
+                      },
+                    }}
+                    onClick={() => {
+                      setModalContent(image);
+                      setModalOpen(true);
+                    }}
                   >
                     <Image
                       placeholder="blur"
