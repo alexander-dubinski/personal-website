@@ -63,6 +63,8 @@ export default function Project({ project, stars }: ProjectProps) {
               <Grid.Col pos="relative" xs={12} md={5}>
                 <Box pos="relative" w="100%" pt="50%" mb="15px">
                   <Image
+                    placeholder="blur"
+                    blurDataURL={project.mainImage.asset.metadata?.lqip}
                     src={urlForImage(project.mainImage.asset).url()}
                     alt={project.mainImage.alt}
                     fill
@@ -101,6 +103,8 @@ export default function Project({ project, stars }: ProjectProps) {
                     sx={{ overflow: 'hidden' }}
                   >
                     <Image
+                      placeholder="blur"
+                      blurDataURL={image.asset.metadata?.lqip}
                       src={urlForImage(image.asset).height(250).url()}
                       alt={image.alt}
                       sizes="(min-width: 768px) 25vw,

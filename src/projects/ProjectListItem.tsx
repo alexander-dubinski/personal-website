@@ -25,6 +25,8 @@ export default function ProjectListItem({
         <Group>
           <Box>
             <Image
+              placeholder="blur"
+              blurDataURL={mainImage.asset.metadata?.lqip}
               style={{ borderRadius: '8px' }}
               src={urlForImage(mainImage.asset).url()}
               alt={mainImage.alt}
@@ -70,6 +72,8 @@ export default function ProjectListItem({
                   sx={{ overflow: 'hidden' }}
                 >
                   <Image
+                    placeholder="blur"
+                    blurDataURL={image.asset.metadata?.lqip}
                     src={urlForImage(image.asset).height(225).url()}
                     alt={image.alt}
                     sizes="(min-width: 768px) 25vw,

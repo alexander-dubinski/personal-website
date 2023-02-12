@@ -43,6 +43,8 @@ const customComponents: PortableTextComponents = {
             caption={caption}
           >
             <NextImage
+              placeholder="blur"
+              blurDataURL={asset.metadata?.lqip}
               sizes="(min-width: 768px) 75vw,
                 (win-width: 576px) 90vw,
                 100vw"
@@ -67,6 +69,8 @@ const customComponents: PortableTextComponents = {
             caption={caption}
           >
             <NextImage
+              placeholder="blur"
+              blurDataURL={asset.metadata?.lqip}
               sizes="(min-width: 768px) 50vw,
                 (win-width: 576px) 75vw,
                 100vw"
