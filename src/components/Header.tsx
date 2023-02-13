@@ -3,13 +3,24 @@ import { Box, Menu, Text } from '@mantine/core';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import About from '@/src/icons/About.svg';
 import CaretDown from '@/src/icons/CaretDown.svg';
+import Github from '@/src/icons/Github.svg';
+import LinkedIn from '@/src/icons/LinkedIn.svg';
+import Projects from '@/src/icons/Project.svg';
+import Resume from '@/src/icons/Resume.svg';
 
 const headerImageStyles = { backgroundColor: '#212121', borderRadius: '50%' };
 
+export const navButtons = [
+  { label: 'About', path: '/about', Icon: About },
+  { label: 'Resume', path: '/resume', Icon: Resume },
+  { label: 'Projects', path: '/projects', Icon: Projects },
+];
+
 export default function Header() {
   return (
-    <header>
+    <Box component="header">
       <Box display="inline-block" pos="relative" w="60px">
         <Link href="/">
           <Image
@@ -35,23 +46,30 @@ export default function Header() {
           </Box>
         </Menu.Target>
         <Menu.Dropdown sx={{ '& a': { color: 'white' } }}>
-          <Menu.Item href="/about" component={Link}>
-            <Text size="xl">About</Text>
-          </Menu.Item>
-          <Menu.Item href="/resume" component={Link}>
-            <Text size="xl">Resume</Text>
-          </Menu.Item>
-          <Menu.Item href="/projects" component={Link}>
-            <Text size="xl">Projects</Text>
-          </Menu.Item>
+          {navButtons.map(({ label, path, Icon }) => (
+            <Menu.Item key={label} href={path} component={Link}>
+              <Icon
+                style={{
+                  display: 'inline-block',
+                  position: 'relative',
+                  top: '5px',
+                }}
+              />
+              <Text display="inline-block" ml="10px" size="xl">
+                {label}
+              </Text>
+            </Menu.Item>
+          ))}
         </Menu.Dropdown>
       </Menu>
       <Box
         component="span"
         sx={{
           float: 'right',
-          '& img': {
+          lineHeight: '56px',
+          '& svg': {
             margin: '0 10px',
+            verticalAlign: 'middle',
           },
         }}
       >
@@ -59,24 +77,12 @@ export default function Header() {
           target="_blank"
           href="https://www.linkedin.com/in/alexander-dubinski/"
         >
-          <Image
-            style={headerImageStyles}
-            src="/LinkedIn.svg"
-            alt="linkedin icon"
-            height={46}
-            width={46}
-          />
+          <LinkedIn style={headerImageStyles} />
         </Link>
         <Link target="_blank" href="https://github.com/alexander-dubinski">
-          <Image
-            style={headerImageStyles}
-            src="/Github.svg"
-            alt="github icon"
-            height={46}
-            width={46}
-          />
+          <Github style={headerImageStyles} />
         </Link>
       </Box>
-    </header>
+    </Box>
   );
 }

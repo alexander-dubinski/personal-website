@@ -4,18 +4,13 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { navButtons } from '@/src/components/Header';
 import StarryBackground, {
   StarryBackgroundProps,
 } from '@/src/components/StarryBackground';
 import { getStarField } from '@/src/util/stars';
 
 interface HomeProps extends StarryBackgroundProps {}
-
-const navButtons = [
-  { label: 'About', path: '/about' },
-  { label: 'Resume', path: '/resume' },
-  { label: 'Projects', path: '/projects' },
-];
 
 export default function Home({ stars }: HomeProps) {
   return (
