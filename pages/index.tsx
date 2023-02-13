@@ -68,9 +68,10 @@ export default function Home({ stars }: HomeProps) {
             </Title>
           </Box>
           <Box sx={{ '& button': { margin: '4px 10px', minWidth: '140px' } }}>
-            {navButtons.map(({ path, label }) => (
+            {navButtons.map(({ path, label, Icon }) => (
               <Link key={label} href={path}>
                 <Button color="blue.8" size="xl">
+                  <Icon style={{ marginRight: '10px' }} />
                   {label}
                 </Button>
               </Link>
