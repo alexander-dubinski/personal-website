@@ -48,6 +48,8 @@ export default function Education({ education }: EducationProps) {
         link={details.image.link}
         image={
           <Image
+            placeholder="blur"
+            blurDataURL={details.image.asset.metadata?.lqip}
             sizes="(min-width: 768px) 20vw,
             (win-width: 576px) 25vw,
             100vw"

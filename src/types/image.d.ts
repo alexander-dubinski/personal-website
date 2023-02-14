@@ -9,6 +9,7 @@ interface Image {
 
 interface ImageMetadata {
   dimensions: ImageDimensions;
+  lqip: string;
 }
 
 interface ImageDimensions {

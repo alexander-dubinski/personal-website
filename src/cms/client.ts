@@ -24,7 +24,12 @@ export const cmsClient = sanityClient({
 });
 
 export function getAllForDocumentType<T>(docType: DocumentType): Promise<T[]> {
-  return cmsClient.fetch(`*[_type == "${docType}"]{..., body[]{}}`);
+  return cmsClient.fetch(
+    `*[_type == "${docType}"]
+    {..., mainImage{..., asset->{_id, _type, metadata{dimensions, lqip}}},
+     images[]{..., asset->{_id, _type, metadata{dimensions, lqip}}},
+      body[]{}}`
+  );
 }
 
 export function getAllForDocumentTypeOrdered<T>(
@@ -33,12 +38,16 @@ export function getAllForDocumentTypeOrdered<T>(
   order: Order
 ): Promise<T[]> {
   return cmsClient.fetch(
-    `*[_type == "${docType}"]{..., body[]{}} | order(${orderBy} ${order})`
+    `*[_type == "${docType}"]
+    {..., image{..., asset->{_id, _type, metadata{lqip}}}} | order(${orderBy} ${order})`
   );
 }
 
 export function getProjectForSlug<T>(slug: string): Promise<T[]> {
   return cmsClient.fetch(
-    `*[_type == "project" && slug.current == "${slug}"]{..., body[]{..., asset->{_id, _type, metadata{dimensions}}}}`
+    `*[_type == "project" && slug.current == "${slug}"][0]
+    {..., mainImage{..., asset->{_id, _type, metadata{lqip}}},
+     images[]{..., asset->{_id, _type, metadata{lqip, dimensions}}},
+      body[]{..., asset->{_id, _type, metadata{dimensions, lqip}}}}`
   );
 }
