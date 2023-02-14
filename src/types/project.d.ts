@@ -8,5 +8,6 @@ interface ProjectEntry extends CMSDocument {
   slug: Slug;
   startYear: number;
   tools: string[];
+  links?: string[];
   body?: PortableTextBlock[];
 }
