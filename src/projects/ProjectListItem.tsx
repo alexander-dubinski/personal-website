@@ -40,8 +40,8 @@ export default function ProjectListItem({
               style={{ borderRadius: '8px' }}
               src={urlForImage(mainImage.asset).url()}
               alt={mainImage.alt}
-              width={260}
-              height={130}
+              width={250}
+              height={125}
             />
           </Box>
           <Box sx={{ color: 'white' }}>
