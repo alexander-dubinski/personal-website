@@ -22,6 +22,7 @@ export default function ProjectGridItem({
   tools,
   startYear,
   images,
+  links,
   setModalContent,
   setModalOpen,
 }: ProjectGridItemProps) {
@@ -107,6 +108,30 @@ export default function ProjectGridItem({
             ))}
           </Box>
           <Text mt="10px">{description}</Text>
+          {links && links.length && (
+            <Box mt="10px" mb="20px">
+              <Text component="span" size="xl" color="blue.3">
+                Links:&nbsp;&nbsp;
+              </Text>
+              {links?.map((link) => (
+                <Link key={link} href={link} target="_blank">
+                  <Text
+                    size="lg"
+                    td="underline"
+                    mr="20px"
+                    color="blue.1"
+                    sx={{
+                      '&:hover': {
+                        color: 'white',
+                      },
+                    }}
+                  >
+                    {link.replace('https://', '')}
+                  </Text>
+                </Link>
+              ))}
+            </Box>
+          )}
           <Box ta="right" mt="10px">
             <Link href={`/projects/${slug.current}`}>
               <Button

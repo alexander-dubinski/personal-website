@@ -22,6 +22,7 @@ export default function ProjectListItem({
   tools,
   startYear,
   images,
+  links,
   setModalContent,
   setModalOpen,
 }: ProjectListItemProps) {
@@ -39,8 +40,8 @@ export default function ProjectListItem({
               style={{ borderRadius: '8px' }}
               src={urlForImage(mainImage.asset).url()}
               alt={mainImage.alt}
-              width={260}
-              height={130}
+              width={250}
+              height={125}
             />
           </Box>
           <Box sx={{ color: 'white' }}>
@@ -105,6 +106,31 @@ export default function ProjectListItem({
               </Carousel.Slide>
             ))}
           </Carousel>
+        )}
+        {links && links.length && (
+          <Box mt="10px" mb="10px">
+            <Text component="span" size="xl" color="blue.3">
+              Links:&nbsp;&nbsp;
+            </Text>
+            {links?.map((link) => (
+              <Link key={link} href={link} target="_blank">
+                <Text
+                  component="span"
+                  size="lg"
+                  td="underline"
+                  mr="20px"
+                  color="blue.1"
+                  sx={{
+                    '&:hover': {
+                      color: 'white',
+                    },
+                  }}
+                >
+                  {link.replace('https://', '')}
+                </Text>
+              </Link>
+            ))}
+          </Box>
         )}
         <Box mt="15px" ta="right">
           <Link href={`/projects/${slug.current}`}>
