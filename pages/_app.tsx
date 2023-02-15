@@ -45,6 +45,16 @@ const theme: MantineThemeOverride = {
         },
       },
     },
+    Carousel: {
+      styles: {
+        control: {
+          backgroundColor: '#0D47A1',
+          '& svg': {
+            color: 'white',
+          },
+        },
+      },
+    },
     Blockquote: {
       styles: {
         root: {
