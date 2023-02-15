@@ -44,7 +44,11 @@ export default function Project({ project, stars }: ProjectProps) {
     <>
       {!router.isFallback && (
         <Head>
-          <title>{project.name}</title>
+          <title>Project: {project.name}</title>
+          <meta
+            name="description"
+            content={`A project by Alexander Dubinski named ${project.name}`}
+          />
         </Head>
       )}
       <Modal
@@ -60,6 +64,8 @@ export default function Project({ project, stars }: ProjectProps) {
               (1 / (modalContent.asset.metadata?.dimensions.aspectRatio || 1)) *
               100
             }%`}
+            bg="white"
+            sx={{ borderRadius: '5px' }}
           >
             <NextImage
               placeholder="blur"
@@ -100,6 +106,7 @@ export default function Project({ project, stars }: ProjectProps) {
               <Grid.Col pos="relative" xs={12} md={5}>
                 <Box pos="relative" w="100%" pt="50%" mb="15px">
                   <Image
+                    style={{ borderRadius: '5px' }}
                     placeholder="blur"
                     blurDataURL={project.mainImage.asset.metadata?.lqip}
                     src={urlForImage(project.mainImage.asset).url()}
@@ -121,7 +128,7 @@ export default function Project({ project, stars }: ProjectProps) {
               Pictures
             </Text>
             <Carousel
-              height={225}
+              height={250}
               slideSize="33.333333%"
               slideGap="sm"
               breakpoints={[
@@ -137,7 +144,9 @@ export default function Project({ project, stars }: ProjectProps) {
                     pos="relative"
                     h="250px"
                     w="100%"
+                    bg="white"
                     sx={{
+                      borderRadius: '5px',
                       overflow: 'hidden',
                       '&:hover': {
                         cursor: 'pointer',

@@ -79,7 +79,9 @@ export default function ProjectListItem({
                   pos="relative"
                   h="225px"
                   w="100%"
+                  bg="white"
                   sx={{
+                    borderRadius: '5px',
                     overflow: 'hidden',
                     '&:hover': {
                       cursor: 'pointer',

@@ -62,7 +62,8 @@ export default function Resume({ stars, career, education }: ResumeProps) {
   return (
     <>
       <Head>
-        <title>Alexander Dubinski - Resume</title>
+        <title>Resume - Alexander Dubinski</title>
+        <meta name="description" content="Alexander Dubinski\'s Resume" />
       </Head>
       <PageContentBox>
         <Tabs variant="pills" defaultValue="overview">

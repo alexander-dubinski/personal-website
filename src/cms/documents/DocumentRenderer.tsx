@@ -105,12 +105,12 @@ const customComponents: PortableTextComponents = {
   },
   block: {
     h1: ({ children }) => (
-      <Title mb="12px" color="blue.2" underline>
+      <Title mb="12px" color="blue.1">
         {children}
       </Title>
     ),
     h3: ({ children }) => (
-      <Text component="h3" size="xl" mb="8px" color="blue.2" underline>
+      <Text component="h3" size="xl" mb="8px" color="blue.1">
         {children}
       </Text>
     ),

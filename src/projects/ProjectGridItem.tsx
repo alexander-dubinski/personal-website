@@ -72,6 +72,7 @@ export default function ProjectGridItem({
                     setModalContent(image);
                     setModalOpen(true);
                   }}
+                  bg="white"
                   sx={{
                     '&:hover': {
                       cursor: 'pointer',

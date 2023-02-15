@@ -73,7 +73,8 @@ export default function Projects({ stars, projects }: ProjectsProps) {
   return (
     <>
       <Head>
-        <title>Alexander Dubinski - Projects</title>
+        <title>Projects - Alexander Dubinski</title>
+        <meta name="description" content="Alexander Dubinski\'s Projects" />
       </Head>
       <Modal
         size="lg"
@@ -83,11 +84,13 @@ export default function Projects({ stars, projects }: ProjectsProps) {
       >
         {modalContent && (
           <Box
+            bg="white"
             pos="relative"
             pt={`${
               (1 / (modalContent.asset.metadata?.dimensions.aspectRatio || 1)) *
               100
             }%`}
+            sx={{ borderRadius: '5px' }}
           >
             <NextImage
               placeholder="blur"
