@@ -15,7 +15,8 @@ export default function About({ stars }: AboutProps) {
   return (
     <>
       <Head>
-        <title>Alexander Dubinski - About</title>
+        <title>About Alexander Dubinski</title>
+        <meta name="description" content="Alexander Dubinski\'s Story" />
       </Head>
       <PageContentBox>
         <Box

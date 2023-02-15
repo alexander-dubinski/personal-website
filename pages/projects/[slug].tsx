@@ -44,7 +44,11 @@ export default function Project({ project, stars }: ProjectProps) {
     <>
       {!router.isFallback && (
         <Head>
-          <title>{project.name}</title>
+          <title>Project: {project.name}</title>
+          <meta
+            name="description"
+            content={`A project by Alexander Dubinski named ${project.name}`}
+          />
         </Head>
       )}
       <Modal

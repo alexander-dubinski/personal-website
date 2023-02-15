@@ -73,7 +73,8 @@ export default function Projects({ stars, projects }: ProjectsProps) {
   return (
     <>
       <Head>
-        <title>Alexander Dubinski - Projects</title>
+        <title>Projects - Alexander Dubinski</title>
+        <meta name="description" content="Alexander Dubinski\'s Projects" />
       </Head>
       <Modal
         size="lg"
