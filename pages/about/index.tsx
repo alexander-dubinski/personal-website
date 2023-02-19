@@ -1,17 +1,25 @@
-import { Box, Text, Title } from '@mantine/core';
+import { Box, Title } from '@mantine/core';
 
 import Head from 'next/head';
 import Image from 'next/image';
 
+import {
+  DocumentType,
+  getAllForDocumentTypeByCreatedDate,
+} from '@/src/cms/client';
+import DocumentRenderer from '@/src/cms/documents/DocumentRenderer';
 import PageContentBox from '@/src/components/PageContentBox';
 import StarryBackground, {
   StarryBackgroundProps,
 } from '@/src/components/StarryBackground';
+import { AboutEntry } from '@/src/types/about';
 import { getStarField } from '@/src/util/stars';
 
-interface AboutProps extends StarryBackgroundProps {}
+interface AboutProps extends StarryBackgroundProps {
+  about: AboutEntry;
+}
 
-export default function About({ stars }: AboutProps) {
+export default function About({ stars, about }: AboutProps) {
   return (
     <>
       <Head>
@@ -54,55 +62,7 @@ export default function About({ stars }: AboutProps) {
           About
         </Title>
         <br />
-        <Text size="lg">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-          lobortis, odio a condimentum tempus, augue lorem vestibulum velit, non
-          iaculis nulla turpis in nisi. Cras condimentum lectus vel malesuada
-          rutrum. Aliquam non laoreet eros, at laoreet metus. Nulla a justo
-          aliquam dolor interdum dapibus. Nam ut mi sed tortor dictum molestie.
-          Cras sodales justo nisl, eu fermentum sem pretium quis. Quisque eget
-          ornare lacus, id aliquet dolor. Pellentesque sem nulla, maximus eu
-          ligula et, imperdiet tempor nisi. Donec nec laoreet est. Suspendisse
-          potenti. Maecenas efficitur quam leo. Maecenas sed magna felis.
-          Aliquam dignissim, enim et porttitor bibendum, purus augue maximus
-          velit, et consectetur odio felis vel ante. Nulla eget neque et mauris
-          hendrerit fermentum eget sed libero.
-        </Text>
-        <br />
-        <Text size="lg">
-          Phasellus rutrum tincidunt imperdiet. Nulla porta mauris fringilla
-          urna auctor tempus. Class aptent taciti sociosqu ad litora torquent
-          per conubia nostra, per inceptos himenaeos. Donec auctor mi ac odio
-          molestie finibus. Mauris sed accumsan dolor, vel tempor velit. Sed sed
-          urna ultricies, aliquet justo a, ultrices arcu. Fusce vitae
-          scelerisque lacus, ac sagittis lectus. Nullam eu sapien vitae enim
-          vehicula gravida. Fusce in odio eu lorem pretium cursus. Nulla
-          dignissim odio enim, eu sagittis metus imperdiet eget. Maecenas ut
-          condimentum quam. Phasellus quis sodales arcu, a tincidunt libero.
-          Aliquam posuere, neque quis vehicula venenatis, augue lorem tristique
-          augue, ut hendrerit sapien sem vitae erat. Ut malesuada elementum
-          justo, ut interdum nisi finibus eget.
-        </Text>
-        <br />
-        <Text size="lg">
-          Donec auctor et neque id commodo. Morbi sapien augue, commodo non
-          consequat malesuada, facilisis at justo. Donec quam turpis, consequat
-          vitae suscipit et, feugiat a orci. Suspendisse tempus est sit amet
-          efficitur facilisis. In neque libero, placerat sed porttitor et,
-          commodo nec eros. In eleifend lectus nec ante rhoncus faucibus. Donec
-          efficitur, leo a fermentum aliquet, sapien mauris vestibulum ligula,
-          sit amet varius turpis arcu at lacus. Nullam finibus luctus lorem ac
-          ultrices. Mauris vel varius tellus, et porttitor leo.
-        </Text>
-        <br />
-        <Text size="lg">
-          Ut quis dui consectetur justo cursus tincidunt. Phasellus ut posuere
-          dolor. Mauris tempor pretium enim, vel accumsan neque rhoncus vel.
-          Proin malesuada congue euismod. Suspendisse massa ante, sodales
-          eleifend risus auctor, gravida sagittis risus. Vestibulum eget varius
-          turpis. Maecenas eu ex eget purus interdum pharetra a a leo. Aliquam
-          quis aliquet neque. Curabitur interdum lacinia luctus.
-        </Text>
+        <DocumentRenderer document={about.body} />
       </PageContentBox>
       <StarryBackground stars={stars} />
     </>
@@ -110,8 +70,16 @@ export default function About({ stars }: AboutProps) {
 }
 
 export async function getStaticProps() {
+  const abouts: AboutEntry[] =
+    await getAllForDocumentTypeByCreatedDate<AboutEntry>(DocumentType.About, 1);
+
+  if (!abouts || abouts.length < 1) {
+    throw Error('about page content not found');
+  }
+
   return {
     props: {
+      about: abouts[0],
       stars: getStarField(350),
     },
   };
