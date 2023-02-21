@@ -4,6 +4,7 @@ export enum DocumentType {
   Project = 'project',
   Career = 'career',
   Education = 'education',
+  About = 'about'
 }
 
 export enum Order {
@@ -40,6 +41,17 @@ export function getAllForDocumentTypeOrdered<T>(
   return cmsClient.fetch(
     `*[_type == "${docType}"]
     {..., image{..., asset->{_id, _type, metadata{lqip}}}} | order(${orderBy} ${order})`
+  );
+}
+
+export function getAllForDocumentTypeByCreatedDate<T>(
+  docType: DocumentType,
+  limit = 0
+): Promise<T[]> {
+  return cmsClient.fetch(
+    `*[_type == "${docType}"]${
+      limit < 1 ? '' : `[0...${limit}]`
+    }{..., body[]{..., asset->{_id, _type, metadata{dimensions, lqip}}}} | order(_createdAt desc)`
   );
 }
 

@@ -14,19 +14,34 @@ export default function Overview({ career, education }: OverviewProps) {
         <Text color="blue.1" size="xl" align="center" fw="bold" underline>
           Introduction
         </Text>
-        <Text pt="8px">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-          lobortis, odio a condimentum tempus, augue lorem vestibulum velit, non
-          iaculis nulla turpis in nisi. Cras condimentum lectus vel malesuada
-          rutrum. Aliquam non laoreet eros, at laoreet metus. Nulla a justo
-          aliquam dolor interdum dapibus. Nam ut mi sed tortor dictum molestie.
-          Cras sodales justo nisl, eu fermentum sem pretium quis. Quisque eget
-          ornare lacus, id aliquet dolor. Pellentesque sem nulla, maximus eu
-          ligula et, imperdiet tempor nisi. Donec nec laoreet est. Suspendisse
-          potenti. Maecenas efficitur quam leo. Maecenas sed magna felis.
-          Aliquam dignissim, enim et porttitor bibendum, purus augue maximus
-          velit, et consectetur odio felis vel ante. Nulla eget neque et mauris
-          hendrerit fermentum eget sed libero.
+        <Text pt="8px" sx={{ textIndent: '30px' }}>
+          If I needed to describe myself in a single sentence or phrase, I would
+          say <b>life long learner</b>. Above all other descriptions or
+          qualities I might claim to have, the non-stop pursuit of knowledge and
+          new skills is by far the most important and is the quality I am most
+          sure of. I think you will find this description of mt is accurate
+          after looking at my educational and career history.
+        </Text>
+        <Text pt="8px" sx={{ textIndent: '30px' }}>
+          In terms of education, I began my academic journey while serving in
+          the military, pursuing a degree in political science. Soon after I
+          completed an undergraduate degree in Economics and then in computer
+          science. My academic curiosity was not satisfied and so I then
+          achieved a master&#39;s degree in computer and also an MBA from the
+          University of Illinois.
+        </Text>
+        <Text pt="8px" sx={{ textIndent: '30px' }}>
+          For my career, after high school I joined the U.S. Marine Corps as a
+          military police investigator. My time in the military gave me some of
+          my most cherished and important lessons about leadership, integrity
+          and personal responsibility. After the military I entered the civilian
+          workforce as a software engineer, working in Japan for the largest
+          e-commerce company in the region. I later found my interest lied in
+          the emerging industry of autonomous driving technology and so I moved
+          to a company which was working on such technology and worked as a
+          senior software engineer in the mapping department. I was later
+          promoted to engineering manager where I am today. Stay tuned for more
+          updates!
         </Text>
       </Grid.Col>
       <Grid.Col xs={12} sm={6}>
