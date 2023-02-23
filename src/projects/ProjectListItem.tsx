@@ -63,7 +63,9 @@ export default function ProjectListItem({
         <Box m="-10px 0 15px 0">{description}</Box>
         {images?.length && (
           <Carousel
-            height={225}
+            withControls={false}
+            draggable={false}
+            height={250}
             slideSize="33.333333%"
             slideGap="sm"
             breakpoints={[
@@ -77,7 +79,7 @@ export default function ProjectListItem({
               <Carousel.Slide key={`${image.asset._ref}_${idx}`}>
                 <Box
                   pos="relative"
-                  h="225px"
+                  h="250px"
                   w="100%"
                   bg="white"
                   sx={{
@@ -96,7 +98,7 @@ export default function ProjectListItem({
                   <Image
                     placeholder="blur"
                     blurDataURL={image.asset.metadata?.lqip}
-                    src={urlForImage(image.asset).height(225).url()}
+                    src={urlForImage(image.asset).height(250).url()}
                     alt={image.alt}
                     sizes="(min-width: 768px) 25vw,
                     (win-width: 576px) 33vw,

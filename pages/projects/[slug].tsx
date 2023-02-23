@@ -40,11 +40,14 @@ export default function Project({ project, stars }: ProjectProps) {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [modalContent, setModalContent] = useState<Image | null>(null);
 
+  const title = !router.isFallback
+    ? `Project: ${project.name}`
+    : 'Alexander Dubinski - Project';
   return (
     <>
       {!router.isFallback && (
         <Head>
-          <title>Project: {project.name}</title>
+          <title>{title}</title>
           <meta
             name="description"
             content={`A project by Alexander Dubinski named ${project.name}`}
@@ -86,10 +89,11 @@ export default function Project({ project, stars }: ProjectProps) {
                 <Title fw="bold" underline>
                   {project.name}
                 </Title>
-                <Box mt="18px">
+                <Box mt="12px">
                   {project.tools.map((tool) => (
                     <Badge
                       mr="5px"
+                      mt="5px"
                       variant="filled"
                       color="blue.6"
                       size="lg"
@@ -122,7 +126,7 @@ export default function Project({ project, stars }: ProjectProps) {
             <DocumentRenderer document={project.body} />
           </>
         )}
-        {project?.images && (
+        {project?.images?.length && (
           <>
             <Text size="xl" color="blue.2" ta="center" mb="10px">
               Pictures
