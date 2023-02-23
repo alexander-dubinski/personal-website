@@ -110,7 +110,7 @@ const customComponents: PortableTextComponents = {
       </Title>
     ),
     h3: ({ children }) => (
-      <Text component="h3" size="xl" mb="8px" color="blue.1">
+      <Text component="h3" size="xl" mb="6px" mt="10px" color="blue.1">
         {children}
       </Text>
     ),
