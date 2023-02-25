@@ -110,11 +110,15 @@ const customComponents: PortableTextComponents = {
       </Title>
     ),
     h3: ({ children }) => (
-      <Text component="h3" size="xl" mb="6px" mt="10px" color="blue.1">
+      <Text component="h3" size="xl" mt="10px" color="blue.1">
         {children}
       </Text>
     ),
-    normal: ({ children }) => <Text component="p">{children}</Text>,
+    normal: ({ children }) => (
+      <Text component="p" mt="8px">
+        {children}
+      </Text>
+    ),
   },
   list: {
     bullet: ({ children }) => (
